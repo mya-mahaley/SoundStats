@@ -7,8 +7,10 @@ xcuserdata/
 SoundStats.xcodeproj/project.xcworkspace/xcuserdata/
 ../.DS_Store
 .DS_Store
-SoundStats.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+SoundStats.xcodeproj/project.xcworkspace/xcshareddata/*
 SoundStats/.DS_Store
+SoundStats.xcodeproj/xcuserdata/*
+SoundStats.xcodeproj/project.xcworkspace/xcuserdata/*
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
