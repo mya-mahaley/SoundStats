@@ -11,6 +11,8 @@ SoundStats.xcodeproj/project.xcworkspace/xcshareddata/*
 SoundStats/.DS_Store
 SoundStats.xcodeproj/xcuserdata/*
 SoundStats.xcodeproj/project.xcworkspace/xcuserdata/*
+SoundStats.xcodeproj/project.xcworkspace/xcuserdata/myamahaley.xcuserdatad/UserInterfaceState.xcuserstate
+SoundStats.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
