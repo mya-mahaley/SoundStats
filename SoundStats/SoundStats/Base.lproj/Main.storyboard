@@ -1,24 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iN8-Qb-MpK">
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="fNu-tS-X4q">
+            <objects>
+                <viewController id="iN8-Qb-MpK" customClass="LoginViewController" customModule="SoundStats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MKs-6U-cTL">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNy-U0-Hak">
+                                <rect key="frame" x="135" y="189" width="160" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Jx9-Gm-cnI"/>
+                                    <constraint firstAttribute="height" constant="54" id="RkQ-oa-DYz"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Login">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="45" name="KohinoorBangla-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.69999999999999996" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCl-bY-BgN">
+                                <rect key="frame" x="59" y="114" width="312" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="312" id="K2A-Gs-SNJ"/>
+                                    <constraint firstAttribute="height" constant="26" id="hsa-uu-dkA"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Welcome to Sound Stats!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="KohinoorBangla-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.69999999999999996" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEv-DK-2nA">
+                                <rect key="frame" x="97" y="732" width="236" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="S7L-Bg-w9X"/>
+                                    <constraint firstAttribute="width" constant="236" id="jlK-sv-6Cq"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="New to Sound Stats? Register Here!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="KohinoorBangla-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.69999999999999996" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1C-5t-wif">
+                                <rect key="frame" x="58" y="291" width="47" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="5bM-SU-cVO"/>
+                                    <constraint firstAttribute="height" constant="26" id="Bxd-Ts-LKp"/>
+                                    <constraint firstAttribute="width" constant="47" id="EpJ-X2-ft7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="dgN-yP-wF9"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="email">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="KohinoorBangla-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.69999999999999996" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBE-t6-3id">
+                                <rect key="frame" x="23.999999999999993" y="339" width="80.333333333333314" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="A4O-2e-yrG"/>
+                                    <constraint firstAttribute="height" constant="28" id="LgM-RD-ZD2"/>
+                                    <constraint firstAttribute="width" constant="80.329999999999998" id="jMO-Z6-JGE"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="password">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="KohinoorBangla-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.69999999999999996" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L2y-yt-b61">
+                                <rect key="frame" x="117" y="283" width="290" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="6B5-2j-POH"/>
+                                    <constraint firstAttribute="height" constant="34" id="XwV-HX-j3v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yr9-7e-CKM">
+                                <rect key="frame" x="116.33333333333331" y="334" width="290" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Dfz-gT-NOY"/>
+                                    <constraint firstAttribute="width" constant="290" id="cR6-SF-PYq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr9-OK-BUw">
+                                <rect key="frame" x="138" y="421" width="154" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="XWl-zs-QCq"/>
+                                    <constraint firstAttribute="width" constant="154" id="xDQ-Hz-VKL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sign In">
+                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="18"/>
+                                    <color key="baseBackgroundColor" red="0.50980392156862742" green="0.38823529411764707" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signInButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="HJs-lt-xnY"/>
+                                    <segue destination="0lE-Zi-WEf" kind="presentation" identifier="signInSegueID" modalPresentationStyle="fullScreen" id="XPc-a9-X0r"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-yo-cPE">
+                                <rect key="frame" x="138" y="470" width="154" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="hoh-dl-1d8"/>
+                                    <constraint firstAttribute="width" constant="154" id="vhW-dc-7xq"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue with Google">
+                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="11"/>
+                                    <color key="baseBackgroundColor" red="0.070588235289999995" green="0.49019607840000001" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="googleButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="Huv-vW-B31"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ph-Lx-Pao">
+                                <rect key="frame" x="138" y="519" width="154" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4W7-lk-Lyn"/>
+                                    <constraint firstAttribute="width" constant="154" id="9gk-wd-54V"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue with Facebook">
+                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="11"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="facebookButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="sbf-Al-at8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-pv-Zo6">
+                                <rect key="frame" x="138" y="800" width="154" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="3tx-DR-LUX"/>
+                                    <constraint firstAttribute="height" constant="35" id="XYd-l3-aka"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Register">
+                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="18"/>
+                                    <color key="baseBackgroundColor" red="1" green="0.38823529411764707" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="registerButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="zhG-6l-3XY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ilY-yu-2aY"/>
+                        <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kr9-OK-BUw" firstAttribute="top" secondItem="Yr9-7e-CKM" secondAttribute="bottom" constant="53" id="3lh-5S-wbj"/>
+                            <constraint firstItem="J1C-5t-wif" firstAttribute="leading" secondItem="ilY-yu-2aY" secondAttribute="leading" constant="58" id="8Kb-80-nww"/>
+                            <constraint firstItem="RBE-t6-3id" firstAttribute="leading" secondItem="ilY-yu-2aY" secondAttribute="leading" constant="23.999999999999993" id="9Zv-sW-ixE"/>
+                            <constraint firstItem="J1C-5t-wif" firstAttribute="top" secondItem="ilY-yu-2aY" secondAttribute="top" constant="188" id="BkE-kE-zBX"/>
+                            <constraint firstItem="L2y-yt-b61" firstAttribute="top" secondItem="bNy-U0-Hak" secondAttribute="bottom" constant="40" id="C2h-Tx-aWa"/>
+                            <constraint firstItem="bEv-DK-2nA" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="CHs-aP-f6n"/>
+                            <constraint firstItem="Yr9-7e-CKM" firstAttribute="leading" secondItem="RBE-t6-3id" secondAttribute="trailing" constant="12" id="EsH-HA-aVs"/>
+                            <constraint firstItem="Yr9-7e-CKM" firstAttribute="top" secondItem="L2y-yt-b61" secondAttribute="bottom" constant="17" id="Huz-cy-MVX"/>
+                            <constraint firstItem="UyG-yo-cPE" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="JXq-oa-VqV"/>
+                            <constraint firstItem="cdn-pv-Zo6" firstAttribute="top" secondItem="bEv-DK-2nA" secondAttribute="bottom" constant="-3" id="R5j-If-okd"/>
+                            <constraint firstItem="cdn-pv-Zo6" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="W3m-hp-Q8N"/>
+                            <constraint firstItem="bNy-U0-Hak" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="ZuO-Ec-lKO"/>
+                            <constraint firstItem="UyG-yo-cPE" firstAttribute="top" secondItem="kr9-OK-BUw" secondAttribute="bottom" constant="14" id="gog-GA-Oj4"/>
+                            <constraint firstItem="RBE-t6-3id" firstAttribute="top" secondItem="J1C-5t-wif" secondAttribute="bottom" constant="22" id="hfE-dk-kaQ"/>
+                            <constraint firstItem="wCl-bY-BgN" firstAttribute="top" secondItem="ilY-yu-2aY" secondAttribute="top" constant="11" id="ig5-sW-X3r"/>
+                            <constraint firstItem="kr9-OK-BUw" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="j5v-lA-6Im"/>
+                            <constraint firstItem="wCl-bY-BgN" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="kFQ-zi-KEM"/>
+                            <constraint firstItem="bNy-U0-Hak" firstAttribute="top" secondItem="wCl-bY-BgN" secondAttribute="bottom" constant="49" id="l8t-4A-sp2"/>
+                            <constraint firstItem="0ph-Lx-Pao" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="l98-gc-Zyb"/>
+                            <constraint firstItem="0ph-Lx-Pao" firstAttribute="top" secondItem="UyG-yo-cPE" secondAttribute="bottom" constant="14" id="n1Q-sN-NiX"/>
+                            <constraint firstItem="L2y-yt-b61" firstAttribute="leading" secondItem="J1C-5t-wif" secondAttribute="trailing" constant="12" id="u9K-yt-xXA"/>
+                            <constraint firstItem="bEv-DK-2nA" firstAttribute="top" secondItem="0ph-Lx-Pao" secondAttribute="bottom" constant="178" id="zmo-Ni-3HW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0gb-Lj-LxN"/>
+                    <connections>
+                        <outlet property="emailField" destination="L2y-yt-b61" id="wel-ju-sJR"/>
+                        <outlet property="passwordField" destination="Yr9-7e-CKM" id="0L5-pf-5Xp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XQf-Vi-GUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-920.93023255813955" y="-2.5751072961373391"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SoundStats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmm-bQ-aat">
+                                <rect key="frame" x="174" y="448.66666666666669" width="82" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="JgA-vo-PB3"/>
+                                    <constraint firstAttribute="width" constant="82" id="rph-Qt-EkL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Log out"/>
+                                <connections>
+                                    <action selector="logOutPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WgO-ei-pQr"/>
+                                    <segue destination="iN8-Qb-MpK" kind="show" id="TQn-gW-aa3"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="66f-Yj-Zvg"/>
+                            <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ijI-Xz-8Ak"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="kC9-HR-iVo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="881.8604651162791" y="3.218884120171674"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q39-2y-cqZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0lE-Zi-WEf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Nzy-cp-eI1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HVN-Y2-52R">
+                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="C3m-AF-b7n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QTa-iL-QER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-46.153846153846153" y="3.5545023696682461"/>
         </scene>
     </scenes>
 </document>
