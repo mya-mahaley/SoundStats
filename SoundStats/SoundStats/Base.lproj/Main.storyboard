@@ -217,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQf-Vi-GUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-920.93023255813955" y="-2.5751072961373391"/>
+            <point key="canvasLocation" x="-1120" y="3"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -240,11 +240,22 @@
                                     <segue destination="iN8-Qb-MpK" kind="show" id="TQn-gW-aa3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-y6-cYk">
+                                <rect key="frame" x="137" y="566" width="158" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Connect to music"/>
+                                <connections>
+                                    <segue destination="Hai-1B-NqF" kind="show" id="Egi-4U-9Fq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="66f-Yj-Zvg"/>
+                            <constraint firstItem="pVo-y6-cYk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="463" id="8CL-eY-kgM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pVo-y6-cYk" secondAttribute="bottom" constant="297" id="8iv-jZ-qek"/>
+                            <constraint firstItem="pVo-y6-cYk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Tnl-az-eCi"/>
                             <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ijI-Xz-8Ak"/>
                         </constraints>
                     </view>
@@ -272,6 +283,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTa-iL-QER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-46.153846153846153" y="3.5545023696682461"/>
+        </scene>
+        <!--Connect Music View Controller-->
+        <scene sceneID="ela-UM-YoB">
+            <objects>
+                <viewController id="Hai-1B-NqF" customClass="ConnectMusicViewController" customModule="SoundStats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0cW-iw-cSY">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhh-hH-ocR">
+                                <rect key="frame" x="137" y="195" width="156" height="58"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Connect">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="41" name="KohinoorBangla-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1L-cG-irQ">
+                                <rect key="frame" x="53" y="261" width="324" height="139"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="139" id="Xmg-KF-FLu"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Connect to your favorite streaming service!">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="25" name="KohinoorBangla-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTb-Dr-hf6">
+                                <rect key="frame" x="115" y="589" width="200" height="44"/>
+                                <color key="tintColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Connect to Spotify">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="KohinoorBangla-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="connectWithSpotifyPressed:" destination="Hai-1B-NqF" eventType="touchUpInside" id="626-zv-TRi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kF0-Us-5zf">
+                                <rect key="frame" x="91" y="424" width="248" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="GkH-1t-yHK"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Connect to Apple Music">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="KohinoorBangla-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cvT-QT-DKc"/>
+                        <color key="backgroundColor" red="0.1058823466" green="0.11372549830000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="o1L-cG-irQ" firstAttribute="centerX" secondItem="0cW-iw-cSY" secondAttribute="centerX" id="7nY-0B-es6"/>
+                            <constraint firstItem="o1L-cG-irQ" firstAttribute="top" secondItem="mhh-hH-ocR" secondAttribute="bottom" constant="8" id="LzH-eJ-gLr"/>
+                            <constraint firstItem="o1L-cG-irQ" firstAttribute="leading" secondItem="cvT-QT-DKc" secondAttribute="leading" constant="53" id="bJP-dR-yao"/>
+                            <constraint firstItem="mhh-hH-ocR" firstAttribute="top" secondItem="cvT-QT-DKc" secondAttribute="top" constant="92" id="lbP-1S-nOd"/>
+                            <constraint firstItem="cvT-QT-DKc" firstAttribute="bottom" secondItem="rTb-Dr-hf6" secondAttribute="bottom" constant="265" id="p1c-tW-umg"/>
+                            <constraint firstItem="o1L-cG-irQ" firstAttribute="centerX" secondItem="kF0-Us-5zf" secondAttribute="centerX" id="sa5-Gd-0Zq"/>
+                            <constraint firstItem="kF0-Us-5zf" firstAttribute="top" secondItem="o1L-cG-irQ" secondAttribute="bottom" constant="24" id="saL-9w-SyJ"/>
+                            <constraint firstItem="mhh-hH-ocR" firstAttribute="centerX" secondItem="o1L-cG-irQ" secondAttribute="centerX" id="uUS-Na-OqS"/>
+                            <constraint firstItem="rTb-Dr-hf6" firstAttribute="centerX" secondItem="cvT-QT-DKc" secondAttribute="centerX" id="vSJ-eh-oAT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tnq-6J-Rsv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="he9-mc-y1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-922.32558139534888" y="783.47639484978549"/>
         </scene>
     </scenes>
 </document>
