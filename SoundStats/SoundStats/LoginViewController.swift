@@ -7,6 +7,9 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
+import FirebaseCore
+import FBSDKCoreKit
 
 class LoginViewController: UIViewController {
 
@@ -23,6 +26,7 @@ class LoginViewController: UIViewController {
                 self.passwordField.text = nil
             }
         }
+        
     }
     
     @IBAction func signInButtonPressed(_ sender: Any) {
@@ -78,8 +82,53 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    //Code Adapted from https://stackoverflow.com/questions/68520136/how-to-pass-the-presenting-view-controller-and-client-id-for-your-app-to-the-goo
     @IBAction func googleButtonPressed(_ sender: Any) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting:self) { user, error in
+
+          if let error = error {
+              let alert = UIAlertController(
+                  title: "Issue Signing In",
+                  message: "\(error.localizedDescription)",
+                  preferredStyle: .alert)
+              
+              alert.addAction(UIAlertAction(title: "OK", style: .default))
+              self.present(alert, animated: true)
+            return
+          }
+
+          guard
+            let authentication = user?.authentication,
+            let idToken = authentication.idToken
+          else {
+            return
+          }
+
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                            accessToken: authentication.accessToken)
+
+            // Authenticate with Firebase using the credential object
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    let alert = UIAlertController(
+                        title: "Issue Signing In",
+                        message: "\(error.localizedDescription)",
+                        preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+
     }
     @IBAction func facebookButtonPressed(_ sender: Any) {
+ 
     }
 }
