@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 import FirebaseCore
-
+import FBSDKCoreKit
 
 class LoginViewController: UIViewController {
 
@@ -26,9 +26,6 @@ class LoginViewController: UIViewController {
                 self.passwordField.text = nil
             }
         }
-        
-        
-        
         
     }
     
@@ -85,6 +82,8 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    //Code Adapted from https://stackoverflow.com/questions/68520136/how-to-pass-the-presenting-view-controller-and-client-id-for-your-app-to-the-goo
     @IBAction func googleButtonPressed(_ sender: Any) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         // Create Google Sign In configuration object.
@@ -94,7 +93,13 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance.signIn(with: config, presenting:self) { user, error in
 
           if let error = error {
-            print(error.localizedDescription)
+              let alert = UIAlertController(
+                  title: "Issue Signing In",
+                  message: "\(error.localizedDescription)",
+                  preferredStyle: .alert)
+              
+              alert.addAction(UIAlertAction(title: "OK", style: .default))
+              self.present(alert, animated: true)
             return
           }
 
@@ -111,14 +116,19 @@ class LoginViewController: UIViewController {
             // Authenticate with Firebase using the credential object
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if let error = error {
-                    print("authentication error \(error.localizedDescription)")
-                    return
+                    let alert = UIAlertController(
+                        title: "Issue Signing In",
+                        message: "\(error.localizedDescription)",
+                        preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
                 }
-                print(authResult ?? "none")
             }
         }
 
     }
     @IBAction func facebookButtonPressed(_ sender: Any) {
+ 
     }
 }
