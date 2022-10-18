@@ -1,9 +1,6 @@
-//
-//  ViewController.swift
-//  easyplay
-//
-//  Created by jrasmusson on 2022-03-21.
-//
+// Connect to Spotify logic taken
+// from Spotify's public repo for their iOS SDK
+// at https://github.com/spotify/ios-sdk 
 
 import UIKit
 

@@ -240,12 +240,12 @@
                                     <segue destination="iN8-Qb-MpK" kind="show" id="TQn-gW-aa3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-y6-cYk">
-                                <rect key="frame" x="137" y="566" width="158" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-y6-cYk">
+                                <rect key="frame" x="136" y="697" width="158" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Connect to music"/>
                                 <connections>
-                                    <segue destination="Hai-1B-NqF" kind="show" id="Egi-4U-9Fq"/>
+                                    <segue destination="Hai-1B-NqF" kind="show" id="UtS-oY-qIQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -253,9 +253,8 @@
                         <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="66f-Yj-Zvg"/>
-                            <constraint firstItem="pVo-y6-cYk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="463" id="8CL-eY-kgM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pVo-y6-cYk" secondAttribute="bottom" constant="297" id="8iv-jZ-qek"/>
-                            <constraint firstItem="pVo-y6-cYk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Tnl-az-eCi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pVo-y6-cYk" secondAttribute="bottom" constant="166" id="7v2-eq-8Ws"/>
+                            <constraint firstItem="pVo-y6-cYk" firstAttribute="centerX" secondItem="Xmm-bQ-aat" secondAttribute="centerX" id="ZA2-hF-DH7"/>
                             <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ijI-Xz-8Ak"/>
                         </constraints>
                     </view>
@@ -282,7 +281,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTa-iL-QER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-46.153846153846153" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="-106" y="3"/>
         </scene>
         <!--Connect Music View Controller-->
         <scene sceneID="ela-UM-YoB">
@@ -363,19 +362,19 @@
                             <constraint firstItem="o1L-cG-irQ" firstAttribute="centerX" secondItem="0cW-iw-cSY" secondAttribute="centerX" id="7nY-0B-es6"/>
                             <constraint firstItem="o1L-cG-irQ" firstAttribute="top" secondItem="mhh-hH-ocR" secondAttribute="bottom" constant="8" id="LzH-eJ-gLr"/>
                             <constraint firstItem="o1L-cG-irQ" firstAttribute="leading" secondItem="cvT-QT-DKc" secondAttribute="leading" constant="53" id="bJP-dR-yao"/>
+                            <constraint firstItem="rTb-Dr-hf6" firstAttribute="centerX" secondItem="kF0-Us-5zf" secondAttribute="centerX" id="j7d-1c-l2i"/>
+                            <constraint firstItem="cvT-QT-DKc" firstAttribute="bottom" secondItem="rTb-Dr-hf6" secondAttribute="bottom" constant="265" id="jze-Nb-bGe"/>
                             <constraint firstItem="mhh-hH-ocR" firstAttribute="top" secondItem="cvT-QT-DKc" secondAttribute="top" constant="92" id="lbP-1S-nOd"/>
-                            <constraint firstItem="cvT-QT-DKc" firstAttribute="bottom" secondItem="rTb-Dr-hf6" secondAttribute="bottom" constant="265" id="p1c-tW-umg"/>
                             <constraint firstItem="o1L-cG-irQ" firstAttribute="centerX" secondItem="kF0-Us-5zf" secondAttribute="centerX" id="sa5-Gd-0Zq"/>
                             <constraint firstItem="kF0-Us-5zf" firstAttribute="top" secondItem="o1L-cG-irQ" secondAttribute="bottom" constant="24" id="saL-9w-SyJ"/>
                             <constraint firstItem="mhh-hH-ocR" firstAttribute="centerX" secondItem="o1L-cG-irQ" secondAttribute="centerX" id="uUS-Na-OqS"/>
-                            <constraint firstItem="rTb-Dr-hf6" firstAttribute="centerX" secondItem="cvT-QT-DKc" secondAttribute="centerX" id="vSJ-eh-oAT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tnq-6J-Rsv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he9-mc-y1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-922.32558139534888" y="783.47639484978549"/>
+            <point key="canvasLocation" x="914" y="859"/>
         </scene>
     </scenes>
 </document>
