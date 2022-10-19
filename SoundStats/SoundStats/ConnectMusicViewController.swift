@@ -19,6 +19,7 @@ class ConnectMusicViewController: UIViewController {
                     self.appRemote.connectionParameters.accessToken = accessToken
                     print("CONNECTING TO APP REMOTE")
                     self.appRemote.connect()
+                    self.performSegue(withIdentifier: "homePageSegueID", sender: nil)
                 }
             }
         }
@@ -136,7 +137,6 @@ extension ConnectMusicViewController: SPTSessionManagerDelegate {
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         appRemote.connectionParameters.accessToken = session.accessToken
         appRemote.connect()
-        self.performSegue(withIdentifier: "homePageSegueID", sender: nil)
     }
 }
 
