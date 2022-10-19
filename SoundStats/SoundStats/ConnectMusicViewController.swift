@@ -136,6 +136,7 @@ extension ConnectMusicViewController: SPTSessionManagerDelegate {
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         appRemote.connectionParameters.accessToken = session.accessToken
         appRemote.connect()
+        self.performSegue(withIdentifier: "homePageSegueID", sender: nil)
     }
 }
 

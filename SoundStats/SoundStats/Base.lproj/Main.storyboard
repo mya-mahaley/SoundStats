@@ -161,6 +161,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Continue with Facebook">
                                     <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="11"/>
+                                    <color key="baseBackgroundColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="facebookButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="sbf-Al-at8"/>
@@ -228,22 +229,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmm-bQ-aat">
-                                <rect key="frame" x="174" y="448.66666666666669" width="82" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="JgA-vo-PB3"/>
-                                    <constraint firstAttribute="width" constant="82" id="rph-Qt-EkL"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-y6-cYk">
+                                <rect key="frame" x="136" y="441" width="158" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Log out"/>
-                                <connections>
-                                    <action selector="logOutPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WgO-ei-pQr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-y6-cYk">
-                                <rect key="frame" x="136" y="697" width="158" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Connect to music"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Connect to music">
+                                    <color key="baseBackgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="Hai-1B-NqF" kind="show" id="UtS-oY-qIQ"/>
                                 </connections>
@@ -251,18 +243,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="66f-Yj-Zvg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pVo-y6-cYk" secondAttribute="bottom" constant="166" id="7v2-eq-8Ws"/>
-                            <constraint firstItem="pVo-y6-cYk" firstAttribute="centerX" secondItem="Xmm-bQ-aat" secondAttribute="centerX" id="ZA2-hF-DH7"/>
-                            <constraint firstItem="Xmm-bQ-aat" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ijI-Xz-8Ak"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kC9-HR-iVo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-147" y="88"/>
+            <point key="canvasLocation" x="-147.90697674418604" y="87.553648068669531"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q39-2y-cqZ">
@@ -371,201 +357,115 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tnq-6J-Rsv"/>
+                    <connections>
+                        <segue destination="fFI-Zk-0cl" kind="presentation" identifier="homePageSegueID" modalPresentationStyle="fullScreen" id="jdI-my-b4t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he9-mc-y1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="534" y="88"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Friends Feed-->
         <scene sceneID="1kf-vf-M6R">
             <objects>
                 <viewController id="4Yn-u4-Gpd" customClass="HomeViewController" customModule="SoundStats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fz9-6h-1JG">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="849"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmo-Tf-tZK">
-                                <rect key="frame" x="107" y="754" width="105" height="121"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="154" id="0k8-qj-d5L"/>
-                                    <constraint firstAttribute="height" constant="35" id="Rbs-Td-IO3"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="person.3.fill" catalog="system" imagePlacement="top" title="">
-                                    <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXs-mT-SNs">
-                                <rect key="frame" x="-14" y="754" width="129" height="121"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="5f5-u5-Er6"/>
-                                    <constraint firstAttribute="width" constant="154" id="X5A-6I-XFS"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="house" catalog="system" title="">
-                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="18"/>
-                                    <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LZ-ym-f5z">
-                                <rect key="frame" x="202" y="754" width="120" height="121"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="154" id="q4K-px-Kfq"/>
-                                    <constraint firstAttribute="height" constant="35" id="v4g-23-LL0"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="gearshape.fill" catalog="system" title="">
-                                    <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwN-l6-7W9">
-                                <rect key="frame" x="309" y="754" width="121" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="154" id="blv-Q9-aaY"/>
-                                    <constraint firstAttribute="height" constant="35" id="uD6-y4-lb0"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="star.circle.fill" catalog="system" title="">
-                                    <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="EK9-VQ-RWK"/>
                         <color key="backgroundColor" red="0.1061258689" green="0.1132665053" blue="0.1333360076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Friends Feed" image="person.3.fill" catalog="system" id="Fx6-25-3qD"/>
                     <navigationItem key="navigationItem" id="Ac5-jP-hhy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lry-xy-9eQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1661.8604651162791" y="54.721030042918457"/>
+            <point key="canvasLocation" x="1288" y="803"/>
         </scene>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="J3v-gZ-yel">
             <objects>
                 <viewController id="xA3-QV-f1M" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XbO-Bs-3KR">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="849"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="0Ek-j7-ERQ">
-                                <rect key="frame" x="-1" y="-69" width="429" height="999"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwE-bh-acM">
-                                        <rect key="frame" x="107" y="811" width="105" height="121"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="154" id="W3M-U2-BRm"/>
-                                            <constraint firstAttribute="height" constant="35" id="fAP-j4-LNa"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="person.3.fill" catalog="system" imagePlacement="top" title="">
-                                            <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFY-i6-NgL">
-                                        <rect key="frame" x="-14" y="811" width="129" height="121"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="154" id="36t-dj-Aes"/>
-                                            <constraint firstAttribute="height" constant="35" id="h6G-0m-xon"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="house" catalog="system" title="">
-                                            <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="18"/>
-                                            <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ov-6d-X0C">
-                                        <rect key="frame" x="202" y="811" width="120" height="121"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="I6a-2w-ujP"/>
-                                            <constraint firstAttribute="width" constant="154" id="c0P-39-c8j"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="gearshape.fill" catalog="system" title="">
-                                            <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOw-Kv-1lA">
-                                        <rect key="frame" x="309" y="811" width="121" height="125"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="rqc-8h-35J"/>
-                                            <constraint firstAttribute="width" constant="154" id="uBp-z3-tlo"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="star.circle.fill" catalog="system" title="">
-                                            <color key="baseBackgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="F8C-D1-BbU"/>
-                                <color key="backgroundColor" red="0.1061258689" green="0.1132665053" blue="0.1333360076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dad-Fg-qhm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="IbX-0h-Bgp"/>
                     <navigationItem key="navigationItem" id="dlV-oJ-4T9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Iu-k5-tfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056" y="796"/>
+            <point key="canvasLocation" x="1994" y="803"/>
         </scene>
-        <!--View Controller-->
+        <!--Customization-->
         <scene sceneID="pkV-Q1-jEk">
             <objects>
                 <viewController id="Wk1-We-rz8" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sTR-Hr-F0s">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="849"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="k4X-LW-049">
-                                <rect key="frame" x="-1" y="-71" width="448" height="1001"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <viewLayoutGuide key="safeArea" id="fer-X5-MnY"/>
-                                <color key="backgroundColor" red="0.1061258689" green="0.1132665053" blue="0.1333360076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GOA-VL-YnP"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Customization" selectedImage="star.circle.fill" catalog="system" id="UWu-oS-F6D"/>
                     <navigationItem key="navigationItem" id="Zwt-UY-w3L"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ds-HE-fhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1853.0232558139535" y="802.78969957081551"/>
+            <point key="canvasLocation" x="2682" y="803"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings-->
         <scene sceneID="hkl-Vq-Elg">
             <objects>
                 <viewController id="ieb-Jd-0Wa" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Oo7-W6-PjH">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="849"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="rY0-Pl-C0s">
-                                <rect key="frame" x="-1" y="-71" width="459" height="1014"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <viewLayoutGuide key="safeArea" id="AZ9-aZ-ZuV"/>
-                                <color key="backgroundColor" red="0.1061258689" green="0.1132665053" blue="0.1333360076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ggq-9j-EZD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="1Ea-3D-lzO">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="hgf-GG-cst"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AeG-c2-aYW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2568.8372093023254" y="802.78969957081551"/>
+            <point key="canvasLocation" x="3520" y="803"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="94C-at-Qf1">
+            <objects>
+                <tabBarController id="fFI-Zk-0cl" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="IEz-fy-8vf">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.50980392159999999" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="systemYellowColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="4Yn-u4-Gpd" kind="relationship" relationship="viewControllers" id="TwH-u4-lE3"/>
+                        <segue destination="xA3-QV-f1M" kind="relationship" relationship="viewControllers" id="XwN-CW-vgE"/>
+                        <segue destination="Wk1-We-rz8" kind="relationship" relationship="viewControllers" id="50i-VV-oXL"/>
+                        <segue destination="ieb-Jd-0Wa" kind="relationship" relationship="viewControllers" id="Xsb-xe-ln1"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJx-5V-2fb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2787" y="88"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="star.circle.fill" catalog="system" width="128" height="123"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
