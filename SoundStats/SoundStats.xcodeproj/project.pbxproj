@@ -19,14 +19,14 @@
 		584A5AC628FB7AA600A9F371 /* SoundStats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 584A5AC428FB7AA600A9F371 /* SoundStats.xcdatamodeld */; };
 		584A5AC828FB7AAA00A9F371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 584A5AC728FB7AAA00A9F371 /* Assets.xcassets */; };
 		584A5ACB28FB7AAA00A9F371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */; };
-		9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; };
-		9D67057E28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9DB5257728FCD35F002E2A49 /* ConnectMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB5257628FCD35F002E2A49 /* ConnectMusicViewController.swift */; };
-		9DC50F9F28FCABFC00D2E627 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */; };
 		5867C1B228FC934D00F84F69 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B128FC934D00F84F69 /* GoogleSignIn */; };
 		5867C1B428FC934D00F84F69 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B328FC934D00F84F69 /* GoogleSignInSwift */; };
 		5867C1B728FCD09E00F84F69 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B628FCD09E00F84F69 /* FacebookCore */; };
 		5867C1B928FCD09E00F84F69 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B828FCD09E00F84F69 /* FacebookLogin */; };
+		9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; };
+		9D67057E28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9DB5257728FCD35F002E2A49 /* ConnectMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB5257628FCD35F002E2A49 /* ConnectMusicViewController.swift */; };
+		9DC50F9F28FCABFC00D2E627 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -399,7 +399,7 @@
 				CODE_SIGN_ENTITLEMENTS = SoundStats/SoundStats.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MM4H27H36D;
+				DEVELOPMENT_TEAM = A8YG5XWSY9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundStats",
