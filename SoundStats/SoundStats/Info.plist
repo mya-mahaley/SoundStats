@@ -22,6 +22,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.565651740786-5q24l9rvsc1qtae69hk9a86q9ifc34fl</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

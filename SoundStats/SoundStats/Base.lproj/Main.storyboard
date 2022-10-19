@@ -134,7 +134,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="signInButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="HJs-lt-xnY"/>
-                                    <segue destination="0lE-Zi-WEf" kind="presentation" identifier="signInSegueID" modalPresentationStyle="fullScreen" id="XPc-a9-X0r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-yo-cPE">
@@ -213,11 +212,11 @@
                     <connections>
                         <outlet property="emailField" destination="L2y-yt-b61" id="wel-ju-sJR"/>
                         <outlet property="passwordField" destination="Yr9-7e-CKM" id="0L5-pf-5Xp"/>
+                        <segue destination="0lE-Zi-WEf" kind="presentation" identifier="signInSegueID" modalPresentationStyle="fullScreen" id="vIG-ir-grf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQf-Vi-GUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1120" y="3"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
