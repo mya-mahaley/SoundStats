@@ -21,10 +21,10 @@
 		584A5ACB28FB7AAA00A9F371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */; };
 		5867C1B228FC934D00F84F69 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B128FC934D00F84F69 /* GoogleSignIn */; };
 		5867C1B428FC934D00F84F69 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B328FC934D00F84F69 /* GoogleSignInSwift */; };
-		5867C1B728FCD09E00F84F69 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B628FCD09E00F84F69 /* FacebookCore */; };
-		5867C1B928FCD09E00F84F69 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B828FCD09E00F84F69 /* FacebookLogin */; };
+		9D55D3D82915F79700D62568 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D55D3D72915F79700D62568 /* ArtistItem.swift */; };
 		9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; };
 		9D67057E28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9D73E1472911D2B40027865A /* TrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D73E1462911D2B40027865A /* TrackItem.swift */; };
 		9DB5257728FCD35F002E2A49 /* ConnectMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB5257628FCD35F002E2A49 /* ConnectMusicViewController.swift */; };
 		9DC50F9F28FCABFC00D2E627 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +57,9 @@
 		584A5ACA28FB7AAA00A9F371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		584A5ACC28FB7AAA00A9F371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D3B42DA28FCAA36007DEEB3 /* SoundStats-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundStats-Bridging-Header.h"; sourceTree = "<group>"; };
+		9D55D3D72915F79700D62568 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
 		9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SpotifyiOS.xcframework; sourceTree = "<group>"; };
+		9D73E1462911D2B40027865A /* TrackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItem.swift; sourceTree = "<group>"; };
 		9DB5257628FCD35F002E2A49 /* ConnectMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectMusicViewController.swift; sourceTree = "<group>"; };
 		9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,12 +70,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5867C1B428FC934D00F84F69 /* GoogleSignInSwift in Frameworks */,
-				5867C1B728FCD09E00F84F69 /* FacebookCore in Frameworks */,
 				580360B928FB8760007170C6 /* FirebaseDatabaseSwift in Frameworks */,
 				5867C1B228FC934D00F84F69 /* GoogleSignIn in Frameworks */,
 				580360B728FB8760007170C6 /* FirebaseDatabase in Frameworks */,
 				9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */,
-				5867C1B928FCD09E00F84F69 /* FacebookLogin in Frameworks */,
 				580360B528FB8760007170C6 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +115,8 @@
 				9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */,
 				9DB5257628FCD35F002E2A49 /* ConnectMusicViewController.swift */,
 				9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */,
+				9D73E1462911D2B40027865A /* TrackItem.swift */,
+				9D55D3D72915F79700D62568 /* ArtistItem.swift */,
 			);
 			path = SoundStats;
 			sourceTree = "<group>";
@@ -142,8 +144,6 @@
 				580360B828FB8760007170C6 /* FirebaseDatabaseSwift */,
 				5867C1B128FC934D00F84F69 /* GoogleSignIn */,
 				5867C1B328FC934D00F84F69 /* GoogleSignInSwift */,
-				5867C1B628FCD09E00F84F69 /* FacebookCore */,
-				5867C1B828FCD09E00F84F69 /* FacebookLogin */,
 			);
 			productName = SoundStats;
 			productReference = 584A5AB828FB7AA600A9F371 /* SoundStats.app */;
@@ -177,7 +177,6 @@
 			packageReferences = (
 				580360B328FB8760007170C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5867C1B028FC934D00F84F69 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				5867C1B528FCD09D00F84F69 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 584A5AB928FB7AA600A9F371 /* Products */;
 			projectDirPath = "";
@@ -207,6 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D73E1472911D2B40027865A /* TrackItem.swift in Sources */,
+				9D55D3D82915F79700D62568 /* ArtistItem.swift in Sources */,
 				584A5AC028FB7AA600A9F371 /* ViewController.swift in Sources */,
 				9DB5257728FCD35F002E2A49 /* ConnectMusicViewController.swift in Sources */,
 				584A5ABC28FB7AA600A9F371 /* AppDelegate.swift in Sources */,
@@ -380,7 +381,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "CS371L-FA22.SoundStats";
+				PRODUCT_BUNDLE_IDENTIFIER = evelyn.SoundStats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundStats/SoundStats-Bridging-Header.h";
@@ -399,7 +400,7 @@
 				CODE_SIGN_ENTITLEMENTS = SoundStats/SoundStats.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8YG5XWSY9;
+				DEVELOPMENT_TEAM = MM4H27H36D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundStats",
@@ -417,7 +418,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "CS371L-FA22.SoundStats";
+				PRODUCT_BUNDLE_IDENTIFIER = evelyn.SoundStats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundStats/SoundStats-Bridging-Header.h";
@@ -466,14 +467,6 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		5867C1B528FCD09D00F84F69 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -501,16 +494,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5867C1B028FC934D00F84F69 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
-		};
-		5867C1B628FCD09E00F84F69 /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5867C1B528FCD09D00F84F69 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-		5867C1B828FCD09E00F84F69 /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5867C1B528FCD09D00F84F69 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 

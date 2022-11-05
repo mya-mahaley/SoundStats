@@ -3,6 +3,7 @@
 // at https://github.com/spotify/ios-sdk 
 
 import UIKit
+import CoreData
 
 class ConnectMusicViewController: UIViewController {
 
@@ -19,7 +20,7 @@ class ConnectMusicViewController: UIViewController {
                     self.appRemote.connectionParameters.accessToken = accessToken
                     print("CONNECTING TO APP REMOTE")
                     self.appRemote.connect()
-                    self.performSegue(withIdentifier: "homePageSegueID", sender: nil)
+                    self.accessToken = accessToken
                 }
             }
         }
@@ -73,6 +74,186 @@ class ConnectMusicViewController: UIViewController {
     @IBAction func connectWithSpotifyPressed(_ sender: Any) {
         guard let sessionManager = sessionManager else { return }
         sessionManager.initiateSession(with: scopes, options: .default)
+        performSegue(withIdentifier: "homePageSegueID", sender: nil)
+        
+        // info dump user stats
+//        getTopArtists()
+        
+        DispatchQueue.main.async {
+            self.getTopTracks()
+            self.readTopTracks()
+            self.clearCoreData()
+        }
+    }
+    
+    func readTopTracks() {
+        let fetchedResults = retrieveTracks()
+        for ob in fetchedResults {
+            let name = ob.value(forKey: "name") as! String
+            print(name)
+            let set = ob.value(forKey: "artists") as! NSSet
+            for ob2 in set {
+                let artist = ob2 as! NSManagedObject
+                let artistName = artist.value(forKey: "name") as! String
+                print(artistName)
+            }
+        }
+    }
+    
+    func getTopArtists() {
+        guard let url = URL(string: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=5") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request, completionHandler: {
+            data, response, error in
+            guard error == nil else {
+                print("ERROR: ", error!)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                print("NO RESPONSE")
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                print("BAD RESPONSE: ", response.statusCode)
+                return
+            }
+            
+            guard let data = data else {
+                print("NO DATA")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let artists = try decoder.decode(ArtistItem.self, from: data)
+                for artist in artists.items {
+                    print("ARTIST:", artist.name)
+                }
+            } catch {
+                print("CATCH: ", error)
+            }
+        }).resume()
+    }
+    
+    func getTopTracks() {
+        print("calling spotify web api")
+        guard let url = URL(string: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request, completionHandler: {
+            data, response, error in
+            guard error == nil else {
+                print("ERROR: ", error!)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                print("NO RESPONSE")
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                print("BAD RESPONSE: ", response.statusCode)
+                return
+            }
+            
+            guard let data = data else {
+                print("NO DATA")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let tracks = try decoder.decode(TrackItem.self, from: data)
+                if tracks.items.count > 0 {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let context = appDelegate.persistentContainer.viewContext
+                    
+                    for track in tracks.items {
+                        let oneTrack = NSEntityDescription.insertNewObject(forEntityName: "Track", into: context)
+                        oneTrack.setValue(track.name, forKey: "name")
+                        
+                        for artist in track.artists {
+                            print(artist.name, terminator: ", ")
+                            let oneArtist = NSEntityDescription.insertNewObject(forEntityName: "Artist", into: context)
+                            oneArtist.setValue(artist.name, forKey: "name")
+                            oneArtist.setValue(artist.followers, forKey: "followers")
+                            oneArtist.setValue(artist.externalUrls?.spotify, forKey: "externalUrl")
+                            
+//                            for image in artist.images! {
+//                                var imageObj = NSEntityDescription.insertNewObject(forEntityName: "Image", into: context)
+//                                imageObj.setValue(image.width, forKey: "width")
+//                                imageObj.setValue(image.height, forKey: "height")
+//                                imageObj.setValue(image.url, forKey: "url")
+//                                imageObj.setValue(oneArtist, forKey: "artist")
+//
+//                            }
+                            
+                            oneArtist.setValue(oneTrack, forKey: "onTrack")
+                        }
+                    }
+                }
+            } catch {
+                print("CATCH: ", error)
+            }
+        }).resume()
+    }
+    
+    func retrieveTracks() -> [NSManagedObject] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Track")
+        var fetchedResults:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        return (fetchedResults)!
+    }
+    
+    func clearCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Track")
+        var fetchedResults:[NSManagedObject]
+        do {
+            try fetchedResults = context.fetch(request) as! [NSManagedObject]
+            if fetchedResults.count > 0 {
+                for result:AnyObject in fetchedResults {
+                    context.delete(result as! NSManagedObject)
+                }
+            }
+            
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
     }
     
     // MARK: - Private Helpers
@@ -86,11 +267,9 @@ class ConnectMusicViewController: UIViewController {
     }
 }
 
-
 // MARK: - SPTAppRemoteDelegate
 extension ConnectMusicViewController: SPTAppRemoteDelegate {
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        print("CONNECTION ESTABLISHED")
 //        updateViewBasedOnConnected()
 //        appRemote.playerAPI?.delegate = self
 //        appRemote.playerAPI?.subscribe(toPlayerState: { (success, error) in
@@ -112,19 +291,11 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
     }
 }
 
-// MARK: - SPTAppRemotePlayerAPIDelegate
-extension ConnectMusicViewController: SPTAppRemotePlayerStateDelegate {
-    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        debugPrint("Spotify Track name: %@", playerState.track.name)
-//        update(playerState: playerState)
-    }
-}
 
 // MARK: - SPTSessionManagerDelegate
 extension ConnectMusicViewController: SPTSessionManagerDelegate {
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
         if error.localizedDescription == "The operation couldn’t be completed. (com.spotify.sdk.login error 1.)" {
-            print("AUTHENTICATE with WEBAPI")
         } else {
             presentAlertController(title: "Authorization Failed", message: error.localizedDescription, buttonTitle: "Bummer")
         }
