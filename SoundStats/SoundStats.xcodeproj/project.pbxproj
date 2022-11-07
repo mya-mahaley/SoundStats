@@ -21,6 +21,7 @@
 		584A5ACB28FB7AAA00A9F371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */; };
 		5867C1B228FC934D00F84F69 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B128FC934D00F84F69 /* GoogleSignIn */; };
 		5867C1B428FC934D00F84F69 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B328FC934D00F84F69 /* GoogleSignInSwift */; };
+		9D4AF4E329183399005C6555 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4AF4E229183399005C6555 /* Playlist.swift */; };
 		9D55D3D82915F79700D62568 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D55D3D72915F79700D62568 /* ArtistItem.swift */; };
 		9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; };
 		9D67057E28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -57,6 +58,7 @@
 		584A5ACA28FB7AAA00A9F371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		584A5ACC28FB7AAA00A9F371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D3B42DA28FCAA36007DEEB3 /* SoundStats-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundStats-Bridging-Header.h"; sourceTree = "<group>"; };
+		9D4AF4E229183399005C6555 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		9D55D3D72915F79700D62568 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
 		9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SpotifyiOS.xcframework; sourceTree = "<group>"; };
 		9D73E1462911D2B40027865A /* TrackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItem.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */,
 				584A5ACC28FB7AAA00A9F371 /* Info.plist */,
 				584A5AC428FB7AA600A9F371 /* SoundStats.xcdatamodeld */,
+				9D4AF4E229183399005C6555 /* Playlist.swift */,
 				580360B128FB85DD007170C6 /* GoogleService-Info.plist */,
 				9D3B42DA28FCAA36007DEEB3 /* SoundStats-Bridging-Header.h */,
 				9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */,
@@ -215,6 +218,7 @@
 				584A5ABE28FB7AA600A9F371 /* SceneDelegate.swift in Sources */,
 				580360BB28FB892A007170C6 /* LoginViewController.swift in Sources */,
 				584A5AC628FB7AA600A9F371 /* SoundStats.xcdatamodeld in Sources */,
+				9D4AF4E329183399005C6555 /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

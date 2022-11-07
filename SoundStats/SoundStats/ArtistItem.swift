@@ -17,6 +17,7 @@ struct Artist: Codable {
     var genres: [String]?
     var images: [Images]?
     let name: String
+    let id: String
 }
 
 struct Follower: Codable {

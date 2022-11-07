@@ -13,6 +13,7 @@ struct TrackItem: Codable {
 
 struct Track: Codable {
     let name: String
+    let id: String
     var artists: [Artist]
 }
 

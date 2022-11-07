@@ -3,6 +3,7 @@
     <entity name="Artist" representedClassName="Artist" syncable="YES">
         <attribute name="externalUrl" optional="YES" attributeType="String"/>
         <attribute name="followers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="artistsArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArtistItem" inverseName="artists" inverseEntity="ArtistItem"/>
         <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genres" inverseName="genresArray" inverseEntity="Genres"/>
@@ -23,11 +24,13 @@
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="images" inverseEntity="Artist"/>
     </entity>
     <entity name="Track" representedClassName="Track" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artist" inverseName="onTrack" inverseEntity="Artist"/>
-        <relationship name="tracksArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackItem" inverseName="tracks" inverseEntity="TrackItem"/>
+        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Artist" inverseName="onTrack" inverseEntity="Artist"/>
+        <relationship name="trackItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackItem" inverseName="tracks" inverseEntity="TrackItem"/>
     </entity>
     <entity name="TrackItem" representedClassName="TrackItem" syncable="YES">
-        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="tracksArray" inverseEntity="Track"/>
+        <attribute name="collectionName" optional="YES" attributeType="String"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Track" inverseName="trackItem" inverseEntity="Track"/>
     </entity>
 </model>
