@@ -28,15 +28,6 @@
       }
     },
     {
-      "identity" : "facebook-ios-sdk",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/facebook/facebook-ios-sdk.git",
-      "state" : {
-        "revision" : "c3d367656ae8ced1149c2c6a5e6b5dd91ecad63c",
-        "version" : "9.3.0"
-      }
-    },
-    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
@@ -124,6 +115,15 @@
       "state" : {
         "revision" : "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
         "version" : "2.30909.0"
+      }
+    },
+    {
+      "identity" : "placid-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/placidapp/placid-ios.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "38182af9e96987a16cdcad5f6b5178d1f79b48bc"
       }
     },
     {

@@ -25,6 +25,7 @@
 		58C96B41291A0A7400FC742D /* Placid in Frameworks */ = {isa = PBXBuildFile; productRef = 58C96B40291A0A7400FC742D /* Placid */; };
 		58C96B4B291A176600FC742D /* templates.placid in Resources */ = {isa = PBXBuildFile; fileRef = 58C96B4A291A176600FC742D /* templates.placid */; };
 		58C96B4D291A1CCD00FC742D /* CustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C96B4C291A1CCD00FC742D /* CustomizationViewController.swift */; };
+		99B55E0B291B06A50027392F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B55E0A291B06A50027392F /* SettingsViewController.swift */; };
 		9D4AF4E329183399005C6555 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4AF4E229183399005C6555 /* Playlist.swift */; };
 		9D55D3D82915F79700D62568 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D55D3D72915F79700D62568 /* ArtistItem.swift */; };
 		9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; };
@@ -64,6 +65,7 @@
 		584A5ACC28FB7AAA00A9F371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C96B4A291A176600FC742D /* templates.placid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = templates.placid; path = ../../templates.placid; sourceTree = "<group>"; };
 		58C96B4C291A1CCD00FC742D /* CustomizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationViewController.swift; sourceTree = "<group>"; };
+		99B55E0A291B06A50027392F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9D3B42DA28FCAA36007DEEB3 /* SoundStats-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundStats-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D4AF4E229183399005C6555 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		9D55D3D72915F79700D62568 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
@@ -116,8 +118,8 @@
 				584A5ABF28FB7AA600A9F371 /* ViewController.swift */,
 				580360BA28FB892A007170C6 /* LoginViewController.swift */,
 				584A5AC128FB7AA600A9F371 /* Main.storyboard */,
-				99B55E06291AC16D0027392F /* SettingsViewController.swift */,
 				58C96B4C291A1CCD00FC742D /* CustomizationViewController.swift */,
+				99B55E0A291B06A50027392F /* SettingsViewController.swift */,
 				583799A32919EBA900F53B9A /* HomeViewController.swift */,
 				584A5AC728FB7AAA00A9F371 /* Assets.xcassets */,
 				58C96B4A291A176600FC742D /* templates.placid */,
@@ -234,8 +236,8 @@
 				584A5ABE28FB7AA600A9F371 /* SceneDelegate.swift in Sources */,
 				583799A42919EBA900F53B9A /* HomeViewController.swift in Sources */,
 				580360BB28FB892A007170C6 /* LoginViewController.swift in Sources */,
+				99B55E0B291B06A50027392F /* SettingsViewController.swift in Sources */,
 				584A5AC628FB7AA600A9F371 /* SoundStats.xcdatamodeld in Sources */,
-				99B55E07291AC16D0027392F /* SettingsViewController.swift in Sources */,
 				9D4AF4E329183399005C6555 /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +387,7 @@
 				CODE_SIGN_ENTITLEMENTS = SoundStats/SoundStats.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8YG5XWSY9;
+				DEVELOPMENT_TEAM = BKV979855L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundStats",
