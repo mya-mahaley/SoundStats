@@ -481,6 +481,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jk0-6B-PUX">
                                 <rect key="frame" x="290" y="279" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="notificationSwitch:" destination="fJG-Bd-4GD" eventType="valueChanged" id="R23-GH-vdb"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXv-0e-KBa">
                                 <rect key="frame" x="290" y="356" width="49" height="31"/>
@@ -569,6 +572,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="logOutPressed:" destination="fJG-Bd-4GD" eventType="touchUpInside" id="9c9-Rw-1WJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ggq-9j-EZD"/>
@@ -578,8 +584,12 @@
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="hgf-GG-cst"/>
+                    <connections>
+                        <outlet property="view" destination="Oo7-W6-PjH" id="fMw-3w-OKh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AeG-c2-aYW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="fJG-Bd-4GD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3519.0697674418602" y="802.78969957081551"/>
         </scene>
