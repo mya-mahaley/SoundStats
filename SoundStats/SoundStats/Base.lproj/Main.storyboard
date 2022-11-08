@@ -473,7 +473,7 @@
         <!--Settings-->
         <scene sceneID="hkl-Vq-Elg">
             <objects>
-                <viewController id="ieb-Jd-0Wa" sceneMemberID="viewController">
+                <viewController id="ieb-Jd-0Wa" customClass="SettingsViewController" customModule="SoundStats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Oo7-W6-PjH">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="849"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -482,7 +482,7 @@
                                 <rect key="frame" x="290" y="279" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="notificationSwitch:" destination="fJG-Bd-4GD" eventType="valueChanged" id="R23-GH-vdb"/>
+                                    <action selector="notificationSwitch:" destination="ieb-Jd-0Wa" eventType="valueChanged" id="PM6-UA-eQb"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXv-0e-KBa">
@@ -573,7 +573,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="logOutPressed:" destination="fJG-Bd-4GD" eventType="touchUpInside" id="9c9-Rw-1WJ"/>
+                                    <action selector="logOutPressed:" destination="ieb-Jd-0Wa" eventType="touchUpInside" id="6P1-HH-zBb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -585,11 +585,11 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="hgf-GG-cst"/>
                     <connections>
-                        <outlet property="view" destination="Oo7-W6-PjH" id="fMw-3w-OKh"/>
+                        <outlet property="logoutButton" destination="aDO-kB-BEl" id="9WL-UV-QFD"/>
+                        <outlet property="notificationSwitch" destination="jk0-6B-PUX" id="9wI-Yc-6YZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AeG-c2-aYW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="fJG-Bd-4GD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3519.0697674418602" y="802.78969957081551"/>
         </scene>

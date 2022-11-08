@@ -2,8 +2,9 @@
 //  SettingsViewController.swift
 //  SoundStats
 //
-//  Created by Sonya Pieklik on 11/5/22.
+//  Created by Sonya Pieklik on 11/8/22.
 //
+
 import UIKit
 import FirebaseAuth
 
