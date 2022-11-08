@@ -118,15 +118,6 @@
       }
     },
     {
-      "identity" : "placid-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/placidapp/placid-ios.git",
-      "state" : {
-        "revision" : "bcd58f8c89c6dd6b3306848c8ad50b41a25537ed",
-        "version" : "1.0.1"
-      }
-    },
-    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
