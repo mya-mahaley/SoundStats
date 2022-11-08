@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Artist" representedClassName="Artist" syncable="YES">
+        <attribute name="externalUrl" optional="YES" attributeType="String"/>
+        <attribute name="followers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="artistsArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArtistItem" inverseName="artists" inverseEntity="ArtistItem"/>
+        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genres" inverseName="genresArray" inverseEntity="Genres"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Image" inverseName="artist" inverseEntity="Image"/>
+        <relationship name="onTrack" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Track" inverseName="artists" inverseEntity="Track"/>
+    </entity>
+    <entity name="ArtistItem" representedClassName="ArtistItem" syncable="YES">
+        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artist" inverseName="artistsArray" inverseEntity="Artist"/>
+    </entity>
+    <entity name="Genres" representedClassName="Genres" syncable="YES">
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <relationship name="genresArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="genres" inverseEntity="Artist"/>
+    </entity>
+    <entity name="Image" representedClassName="Image" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="images" inverseEntity="Artist"/>
+    </entity>
+    <entity name="Track" representedClassName="Track" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Artist" inverseName="onTrack" inverseEntity="Artist"/>
+        <relationship name="trackItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackItem" inverseName="tracks" inverseEntity="TrackItem"/>
+    </entity>
+    <entity name="TrackItem" representedClassName="TrackItem" syncable="YES">
+        <attribute name="collectionName" optional="YES" attributeType="String"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Track" inverseName="trackItem" inverseEntity="Track"/>
+    </entity>
 </model>

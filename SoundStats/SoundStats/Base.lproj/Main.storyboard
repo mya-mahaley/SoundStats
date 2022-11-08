@@ -358,12 +358,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="tnq-6J-Rsv"/>
                     <connections>
-                        <segue destination="fFI-Zk-0cl" kind="presentation" identifier="homePageSegueID" modalPresentationStyle="fullScreen" id="jdI-my-b4t"/>
+                        <segue destination="fFI-Zk-0cl" kind="show" identifier="homePageSegueID" id="cWq-lh-LIc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he9-mc-y1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534" y="88"/>
+            <point key="canvasLocation" x="1186" y="88"/>
         </scene>
         <!--Friends Feed-->
         <scene sceneID="1kf-vf-M6R">
@@ -509,6 +509,7 @@
         <scene sceneID="94C-at-Qf1">
             <objects>
                 <tabBarController id="fFI-Zk-0cl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5qC-CE-jgb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="IEz-fy-8vf">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
