@@ -11,17 +11,21 @@ import FirebaseAuth
 
 
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var logoutButton: UIButton!
   
     @IBOutlet weak var notificationSwitch: UISwitch!
     
+    @IBOutlet weak var imageView: UIImageView!
+    let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     
+        imagePicker.delegate = self
         
+
         UNUserNotificationCenter.current().requestAuthorization(options:[.alert,.badge,.sound]){
             pass, error in
             if pass {
@@ -33,6 +37,26 @@ class SettingsViewController: UIViewController {
         
     }
 
+    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+            
+        present(imagePicker, animated: true, completion: nil)    }
+    
+   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = pickedImage
+            }
+            
+            dismiss(animated: true, completion: nil)
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            dismiss(animated: true, completion: nil)
+        }
+   
     
     @IBAction func notificationSwitch(_ sender: Any) {
         if notificationSwitch.isOn{
@@ -77,7 +101,10 @@ class SettingsViewController: UIViewController {
         }
     
         navigationController?.popToRootViewController(animated: true)
-        
+        self.performSegue(withIdentifier: "logOutPressed", sender: self)
         
     }
+    
+   
+
 }
