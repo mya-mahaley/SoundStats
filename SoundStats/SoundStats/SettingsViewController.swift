@@ -77,7 +77,7 @@ class SettingsViewController: UIViewController {
         }
     
         navigationController?.popToRootViewController(animated: true)
-        self.performSegue(withIdentifier: "logOutPressed", sender: self)
+        
         
     }
 }
