@@ -23,6 +23,9 @@
 		5867C1B428FC934D00F84F69 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B328FC934D00F84F69 /* GoogleSignInSwift */; };
 		9D4AF4E329183399005C6555 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4AF4E229183399005C6555 /* Playlist.swift */; };
 		9D55D3D82915F79700D62568 /* ArtistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D55D3D72915F79700D62568 /* ArtistItem.swift */; };
+    586F1D752916061D0049B5CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F1D742916061D0049B5CE /* HomeViewController.swift */; };
+		58A6C40629198C250027098D /* templates.placid in Resources */ = {isa = PBXBuildFile; fileRef = 58A6C40529198C250027098D /* templates.placid */; };
+		58A8D4C52914BD06009EA64E /* Placid in Frameworks */ = {isa = PBXBuildFile; productRef = 58A8D4C42914BD06009EA64E /* Placid */; };
 		9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; };
 		9D67057E28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D73E1472911D2B40027865A /* TrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D73E1462911D2B40027865A /* TrackItem.swift */; };
@@ -57,6 +60,8 @@
 		584A5AC728FB7AAA00A9F371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		584A5ACA28FB7AAA00A9F371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		584A5ACC28FB7AAA00A9F371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		586F1D742916061D0049B5CE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		58A6C40529198C250027098D /* templates.placid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = templates.placid; sourceTree = "<group>"; };
 		9D3B42DA28FCAA36007DEEB3 /* SoundStats-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundStats-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D4AF4E229183399005C6555 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		9D55D3D72915F79700D62568 /* ArtistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistItem.swift; sourceTree = "<group>"; };
@@ -77,6 +82,7 @@
 				580360B728FB8760007170C6 /* FirebaseDatabase in Frameworks */,
 				9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */,
 				580360B528FB8760007170C6 /* FirebaseAuth in Frameworks */,
+				58A8D4C52914BD06009EA64E /* Placid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +114,7 @@
 				584A5ABF28FB7AA600A9F371 /* ViewController.swift */,
 				580360BA28FB892A007170C6 /* LoginViewController.swift */,
 				584A5AC128FB7AA600A9F371 /* Main.storyboard */,
+				586F1D742916061D0049B5CE /* HomeViewController.swift */,
 				584A5AC728FB7AAA00A9F371 /* Assets.xcassets */,
 				584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */,
 				584A5ACC28FB7AAA00A9F371 /* Info.plist */,
@@ -117,6 +124,7 @@
 				9D3B42DA28FCAA36007DEEB3 /* SoundStats-Bridging-Header.h */,
 				9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */,
 				9DB5257628FCD35F002E2A49 /* ConnectMusicViewController.swift */,
+				58A6C40529198C250027098D /* templates.placid */,
 				9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */,
 				9D73E1462911D2B40027865A /* TrackItem.swift */,
 				9D55D3D72915F79700D62568 /* ArtistItem.swift */,
@@ -147,6 +155,7 @@
 				580360B828FB8760007170C6 /* FirebaseDatabaseSwift */,
 				5867C1B128FC934D00F84F69 /* GoogleSignIn */,
 				5867C1B328FC934D00F84F69 /* GoogleSignInSwift */,
+				58A8D4C42914BD06009EA64E /* Placid */,
 			);
 			productName = SoundStats;
 			productReference = 584A5AB828FB7AA600A9F371 /* SoundStats.app */;
@@ -180,6 +189,7 @@
 			packageReferences = (
 				580360B328FB8760007170C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5867C1B028FC934D00F84F69 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				58A8D4C32914BD05009EA64E /* XCRemoteSwiftPackageReference "placid-ios" */,
 			);
 			productRefGroup = 584A5AB928FB7AA600A9F371 /* Products */;
 			projectDirPath = "";
@@ -199,6 +209,7 @@
 				580360B228FB85DD007170C6 /* GoogleService-Info.plist in Resources */,
 				584A5AC828FB7AAA00A9F371 /* Assets.xcassets in Resources */,
 				584A5AC328FB7AA600A9F371 /* Main.storyboard in Resources */,
+				58A6C40629198C250027098D /* templates.placid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +225,7 @@
 				584A5AC028FB7AA600A9F371 /* ViewController.swift in Sources */,
 				9DB5257728FCD35F002E2A49 /* ConnectMusicViewController.swift in Sources */,
 				584A5ABC28FB7AA600A9F371 /* AppDelegate.swift in Sources */,
+				586F1D752916061D0049B5CE /* HomeViewController.swift in Sources */,
 				9DC50F9F28FCABFC00D2E627 /* SpotifyConstants.swift in Sources */,
 				584A5ABE28FB7AA600A9F371 /* SceneDelegate.swift in Sources */,
 				580360BB28FB892A007170C6 /* LoginViewController.swift in Sources */,
@@ -471,6 +483,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		58A8D4C32914BD05009EA64E /* XCRemoteSwiftPackageReference "placid-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/placidapp/placid-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -498,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5867C1B028FC934D00F84F69 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		58A8D4C42914BD06009EA64E /* Placid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58A8D4C32914BD05009EA64E /* XCRemoteSwiftPackageReference "placid-ios" */;
+			productName = Placid;
 		};
 /* End XCSwiftPackageProductDependency section */
 
