@@ -10,16 +10,17 @@ import Placid
 import CoreData
 
 class HomeViewController: UIViewController {
-
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var segVC: UISegmentedControl!
-    var currentColor: String!
-    
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    var currentColor: String!
     var mainTemplate = PlacidSDK.template(withIdentifier: "qlmhe8hvu")
     var moodTemplate = PlacidSDK.template(withIdentifier: "wf1xyvyhu")
     var topSongsTemplate = PlacidSDK.template(withIdentifier: "1jrtyolls")
+    var trackArray:[Track] = []
+
+    
+    
     //rgba(130,99,255,255)
     let purple = UIColor(red: 0.51, green: 0.39, blue: 1.00, alpha: 1.00)
     //rgba(125,205,98,255)
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController {
         /*mainTemplate?.preload()
          moodTemplate?.preload()
          topSongsTemplate?.preload()*/
+        populateTopTracks()
         setColorScheme()
         loadMainImage()
     }
@@ -43,6 +45,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getPreferences()
+        
         currentColor = preferences.value(forKey: "color") as? String
         setColorScheme()
         
@@ -79,16 +82,94 @@ class HomeViewController: UIViewController {
         
         let rotation = mainTemplate?.rectangleLayer(named: "RotationBackground")
         rotation?.backgroundColor = color
+        
+        let song1 = mainTemplate?.textLayer(named: "Song1Text")
+        if(trackArray.count > 0) {
+            let song1Artists = getArtistString(artistList: trackArray[0].artists)
+            song1?.text = "\(trackArray[0].name) - \(song1Artists)"
+        } else {
+            song1?.text = "N/A"
+        }
+        
+        
+        let song2 = mainTemplate?.textLayer(named: "Song2Text")
+        if(trackArray.count > 1) {
+            let song2Artists = getArtistString(artistList: trackArray[1].artists)
+            song2?.text = "\(trackArray[1].name) - \(song2Artists)"
+        } else {
+            song2?.text = "N/A"
+        }
+        
+        let song3 = mainTemplate?.textLayer(named: "Song3Text")
+        if(trackArray.count > 2) {
+            let song3Artists = getArtistString(artistList: trackArray[2].artists)
+            print(song3Artists)
+            song3?.text = "\(trackArray[2].name) - \(song3Artists)"
+        } else {
+            song3?.text = "N/A"
+        }
+        
+        let song4 = mainTemplate?.textLayer(named: "Song4Text")
+        if(trackArray.count > 3) {
+            let song4Artists = getArtistString(artistList: trackArray[3].artists)
+            print(song4Artists)
+            song4?.text = "\(trackArray[3].name) - \(song4Artists)"
+        } else {
+            song4?.text = "N/A"
+        }
+        
+        let song5 = mainTemplate?.textLayer(named: "Song5Text")
+        if(trackArray.count > 4) {
+            let song5Artists = getArtistString(artistList: trackArray[4].artists)
+            print(song5Artists)
+            song5?.text = "\(trackArray[4].name) - \(song5Artists)"
+        } else {
+            song5?.text = "N/A"
+        }
+    }
+    
+    private func getArtistString(artistList: [Artist]) -> String {
+        var result = ""
+        var i = 0
+        for artist in artistList {
+            result.append(artist.name)
+            if(i < artistList.count - 1){
+                result.append(", ")
+            }
+            i += 1
+        }
+        return result
     }
     
     private func topSongsBackground(color: UIColor) {
         let background = topSongsTemplate?.rectangleLayer(named: "SongBackground")
         background?.backgroundColor = color
+        
+        let songTitle = topSongsTemplate?.textLayer(named: "SongTitle")
+        let artistName = topSongsTemplate?.textLayer(named: "ArtistName")
+        let artistImage = topSongsTemplate?.pictureLayer(named: "ArtistImage")
+        if(trackArray.count > 0) {
+            let artists = getArtistString(artistList: trackArray[0].artists)
+            
+            let curArtist = trackArray[0].artists[0]
+            
+            if(curArtist.images != nil){
+                artistImage?.imageURL = URL(string: (curArtist.images?[0].url)!)
+            }
+            songTitle?.text = "\(trackArray[0].name)"
+            artistName?.text = "\(artists)"
+        } else {
+            songTitle?.text = "N/A"
+            artistName?.text = "N/A"
+        }
     }
-    private func moodBackground(color: UIColor) {
+    
+    
+    private func moodBackground(color: UIColor){
         let background = moodTemplate?.rectangleLayer(named: "MainstreamBackground")
         background?.backgroundColor = color
     }
+    
     private func setColorScheme() {
         switch currentColor {
             case "Teal":
@@ -145,7 +226,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func segChanged(_ sender: Any) {
+        
         setColorScheme()
+        print(currentColor ?? "j")
         switch segVC.selectedSegmentIndex {
             case 0:
                 loadMainImage()
@@ -206,5 +289,54 @@ class HomeViewController: UIViewController {
             abort()
         }
         return(fetchedResults)!
+    }
+    
+    private func getTrackItem() ->[NSManagedObject] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TrackItem")
+        var fetchedResults:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            // if an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        return(fetchedResults)!
+    }
+    
+    private func populateTopTracks() {
+        let fetchedResults = getTrackItem()
+        var trackItems:[NSManagedObject] = []
+        print("TRACK ITEMS \(fetchedResults.count)")
+        for track in fetchedResults {
+            var collectionName = track.value(forKey: "collectionName") as! String
+            if (collectionName == "userTopTracks") {
+                trackItems.append(track)
+            }
+        }
+        
+        var tracks = trackItems[0].value(forKey: "tracks") as! NSSet
+      
+        for trackObj in tracks {
+            let track = trackObj as! NSManagedObject
+            let trackName = track.value(forKey: "name") as! String
+            let trackID = track.value(forKey: "id") as! String
+                var artistArray:[Artist] = []
+                let artists = track.value(forKey: "artists") as! NSSet
+                for artistObj in artists {
+                    let artist = artistObj as! NSManagedObject
+                    let artistName = artist.value(forKey: "name") as! String
+                    let artistID = artist.value(forKey: "id") as! String
+                    artistArray.append(Artist(name: artistName, id: artistID))
+                }
+
+                trackArray.append(Track(name: trackName, id: trackID, artists: artistArray))
+        }
     }
 }
