@@ -403,13 +403,15 @@
                                 </constraints>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QM-OY-ceM">
-                                <rect key="frame" x="328" y="724" width="46" height="53"/>
+                                <rect key="frame" x="328" y="725" width="46" height="52.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52.329999999999998" id="L7M-MB-KtN"/>
                                     <constraint firstAttribute="width" constant="46" id="NUN-Gz-HLa"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="square.and.arrow.up.fill" catalog="system"/>
+                                <state key="normal" backgroundImage="square.and.arrow.up.fill" catalog="system">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="gradientPressed:" destination="Wk1-We-rz8" eventType="touchUpInside" id="8gG-UL-mgP"/>
                                     <action selector="sharePressed:" destination="xA3-QV-f1M" eventType="touchUpInside" id="2C2-7f-vzh"/>

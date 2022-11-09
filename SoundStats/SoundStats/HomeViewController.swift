@@ -133,7 +133,6 @@ class HomeViewController: UIViewController {
         let song3 = mainTemplate?.textLayer(named: "Song3Text")
         if(trackArray.count > 2) {
             let song3Artists = getArtistString(artistList: trackArray[2].artists)
-            print(song3Artists)
             song3?.text = "\(trackArray[2].name) - \(song3Artists)"
         } else {
             song3?.text = "N/A"
@@ -142,7 +141,6 @@ class HomeViewController: UIViewController {
         let song4 = mainTemplate?.textLayer(named: "Song4Text")
         if(trackArray.count > 3) {
             let song4Artists = getArtistString(artistList: trackArray[3].artists)
-            print(song4Artists)
             song4?.text = "\(trackArray[3].name) - \(song4Artists)"
         } else {
             song4?.text = "N/A"
@@ -151,7 +149,6 @@ class HomeViewController: UIViewController {
         let song5 = mainTemplate?.textLayer(named: "Song5Text")
         if(trackArray.count > 4) {
             let song5Artists = getArtistString(artistList: trackArray[4].artists)
-            print(song5Artists)
             song5?.text = "\(trackArray[4].name) - \(song5Artists)"
         } else {
             song5?.text = "N/A"
@@ -334,7 +331,6 @@ class HomeViewController: UIViewController {
     private func populateTopTracks() {
         let fetchedResults = getTrackItem()
         var trackItems:[NSManagedObject] = []
-        print("TRACK ITEMS \(fetchedResults.count)")
         for track in fetchedResults {
             let collectionName = track.value(forKey: "collectionName") as! String
             if (collectionName == "userTopTracks") {
