@@ -26,6 +26,8 @@ Mya Mahaley (55% Alpha release, 33% Beta release, 44% overall):
     - Switched Home Screen views to Tab Bar Controller
     - Attempted Apple Music connection
     - Integrated individual Storyboard Files into one.
+    - Created and integrated dynamic visualizations with basic data loaded
+    - Implemented Core Data for color scheme and dark mode preferences
     
 ### Deviations:
 - Alpha Release
@@ -59,6 +61,6 @@ How to run SoundStats on your phone:
         -  Once you grant access, your Spotify may begin playing music
 
 - For the Spotify API requests to work, your Spotify email and SoundStats bundle identifier may need to be added to our Spotify developer dashboard.
-- For the visualizations to load, your bundle identifier may need to be added to Placid. 
+- For the visualizations to load, your bundle identifier may need to be added to Placid. (email mya.mahaley@utexas.edu if visualizations don't load)
 - Please email us to add these to our development tools!
 
