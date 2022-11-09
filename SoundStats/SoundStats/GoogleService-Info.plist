@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>CS371L-FA22.SoundStats </string>
+	<string>CS371L-FA22sonya.SoundStats</string>
 	<key>PROJECT_ID</key>
 	<string>soundstats-d6022</string>
 	<key>STORAGE_BUCKET</key>

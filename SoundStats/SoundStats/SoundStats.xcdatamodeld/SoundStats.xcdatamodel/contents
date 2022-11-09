@@ -13,6 +13,7 @@
     <entity name="ArtistItem" representedClassName="ArtistItem" syncable="YES">
         <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artist" inverseName="artistsArray" inverseEntity="Artist"/>
     </entity>
+    <entity name="Color" representedClassName="Color" syncable="YES" codeGenerationType="class"/>
     <entity name="Genres" representedClassName="Genres" syncable="YES">
         <attribute name="genre" optional="YES" attributeType="String"/>
         <relationship name="genresArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="genres" inverseEntity="Artist"/>
@@ -22,6 +23,10 @@
         <attribute name="url" optional="YES" attributeType="String"/>
         <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="images" inverseEntity="Artist"/>
+    </entity>
+    <entity name="Preferences" representedClassName="Preferences" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="darkMode" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="Track" representedClassName="Track" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>

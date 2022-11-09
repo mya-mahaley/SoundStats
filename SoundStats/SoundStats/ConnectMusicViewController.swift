@@ -153,6 +153,7 @@ class ConnectMusicViewController: UIViewController {
             
             guard response.statusCode == 200 else {
                 print("BAD RESPONSE: ", response.statusCode)
+                print("BAD RESPONSE: ", String(decoding: data!, as: UTF8.self))
                 return
             }
             
@@ -315,7 +316,7 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
         print("app remote did establish connection")
         DispatchQueue.main.async {
-//            self.clearCoreData()
+            self.clearCoreData()
             self.getUserTopTracks(completionHandler: {
                 tracks, error in
                 guard error == nil else {
@@ -404,7 +405,63 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                             print(artist.name, artist.id)
                         }
                     }
-
+                var similarTracksName = [String]()
+                              var similarTracksArtist = [String]()
+                              for track in userTopTracks.items {
+                                  let idOne = track.id
+                                  for trackTwo in globalChartTracks.items {
+                                      let idTwo = trackTwo.id
+                                      if idOne == idTwo {
+                                          similarTracksName.append(track.name)
+                                          for artist in track.artists{
+                                              similarTracksArtist.append(artist.name)
+                                          }
+                                          }
+                                      }
+                                  }
+                              // thought process:
+                              //0 underground undergroud; 1-10 underground; 11-20 moderate
+                              // 21-30 a perfect mix of both; 31-40 pretty trendy; 41-50 super duper trendy
+                              if similarTracksName.isEmpty {
+                                  print("no tracks underground underground")
+                              } else {
+                                  
+                              print("simlar tracks for user top and global chart tracks:")
+                              for name in similarTracksName {
+                                  print("\(name)")
+                              }
+                              }
+                              let capacity = similarTracksName.capacity
+                              switch (capacity){
+                              case 0:
+                                  print("underground underground")
+                                  print("percentage \((capacity/50)*100)%")
+                                  break
+                              case 1...10:
+                                  print("underground")
+                                  print("percentage \((capacity/50)*100)%")
+                                  break
+                              case 11...20:
+                                  print("moderate")
+                                  print("percentage \((capacity/50)*100)%")
+                                  break
+                              case 21...30:
+                                  print("perfect mix of both")
+                                  print("percentage \((capacity/50)*100)%")
+                                  break
+                              case 31...40:
+                                  print("pretty trendy")
+                                  print("percentage \((capacity/50)*100)%")
+                                  break
+                              case 41...50:
+                                  print("super trendy")
+                                  print("percentage \((capacity/50)*100)%")
+                                  break
+                                  
+                              default:
+                                  print("something went wrong")
+                                  
+                              }
             })
 
         }
@@ -480,4 +537,5 @@ extension ConnectMusicViewController {
         }
         task.resume()
     }
+    
 }

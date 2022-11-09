@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import FirebaseCore
 import GoogleSignIn
+import Placid
 
 
 @main
@@ -16,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        do {
+                try PlacidSDK.configure(
+                    withLicenseKey: "placid-9xxguhdizerajwjw-qav15svbxeimlqjt",
+                    templateURL: Bundle.main.url(forResource: "templates", withExtension: "placid")
+                )
+            } catch {
+                print(error.localizedDescription)
+            }
         return true
     }
 
@@ -33,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+   
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
