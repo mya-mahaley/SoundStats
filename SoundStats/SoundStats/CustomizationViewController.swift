@@ -17,25 +17,23 @@ class CustomizationViewController: UIViewController {
     @IBOutlet weak var tealButton: UIButton!
     var preferences: NSManagedObject!
     var currentColor: String!
+    var darkMode: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let mode = darkMode.darkMode
-        if (mode){
+        super.viewWillAppear(animated)
+        getPreferences()
+        currentColor = preferences.value(forKey: "color") as? String
+        darkMode = preferences.value(forKey: "darkMode") as? Bool
+        if (darkMode){
             view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
         } else {
             self.view.backgroundColor = UIColor.lightGray
         }
         
-        super.viewWillAppear(animated)
-        getPreferences()
-        currentColor = preferences.value(forKey: "color") as? String
         switch currentColor {
             case "Gradient":
                 changeButtonShadows(newButton: gradientButton)

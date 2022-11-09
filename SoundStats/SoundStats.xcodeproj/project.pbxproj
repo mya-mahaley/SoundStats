@@ -22,6 +22,7 @@
 		584A5ACB28FB7AAA00A9F371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */; };
 		5867C1B228FC934D00F84F69 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B128FC934D00F84F69 /* GoogleSignIn */; };
 		5867C1B428FC934D00F84F69 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B328FC934D00F84F69 /* GoogleSignInSwift */; };
+		58B870E2291B4CA300FC3E62 /* FriendsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B870E1291B4CA300FC3E62 /* FriendsFeedViewController.swift */; };
 		58C96B41291A0A7400FC742D /* Placid in Frameworks */ = {isa = PBXBuildFile; productRef = 58C96B40291A0A7400FC742D /* Placid */; };
 		58C96B4B291A176600FC742D /* templates.placid in Resources */ = {isa = PBXBuildFile; fileRef = 58C96B4A291A176600FC742D /* templates.placid */; };
 		58C96B4D291A1CCD00FC742D /* CustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C96B4C291A1CCD00FC742D /* CustomizationViewController.swift */; };
@@ -63,6 +64,7 @@
 		584A5AC728FB7AAA00A9F371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		584A5ACA28FB7AAA00A9F371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		584A5ACC28FB7AAA00A9F371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58B870E1291B4CA300FC3E62 /* FriendsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFeedViewController.swift; sourceTree = "<group>"; };
 		58C96B4A291A176600FC742D /* templates.placid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = templates.placid; path = ../../templates.placid; sourceTree = "<group>"; };
 		58C96B4C291A1CCD00FC742D /* CustomizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationViewController.swift; sourceTree = "<group>"; };
 		99B55E0A291B06A50027392F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		584A5ABA28FB7AA600A9F371 /* SoundStats */ = {
 			isa = PBXGroup;
 			children = (
+				58B870E1291B4CA300FC3E62 /* FriendsFeedViewController.swift */,
 				580360BC28FB9A8D007170C6 /* SoundStats.entitlements */,
 				584A5ABB28FB7AA600A9F371 /* AppDelegate.swift */,
 				584A5ABD28FB7AA600A9F371 /* SceneDelegate.swift */,
@@ -236,6 +239,7 @@
 				584A5ABE28FB7AA600A9F371 /* SceneDelegate.swift in Sources */,
 				583799A42919EBA900F53B9A /* HomeViewController.swift in Sources */,
 				580360BB28FB892A007170C6 /* LoginViewController.swift in Sources */,
+				58B870E2291B4CA300FC3E62 /* FriendsFeedViewController.swift in Sources */,
 				99B55E0B291B06A50027392F /* SettingsViewController.swift in Sources */,
 				584A5AC628FB7AA600A9F371 /* SoundStats.xcdatamodeld in Sources */,
 				9D4AF4E329183399005C6555 /* Playlist.swift in Sources */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iN8-Qb-MpK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iN8-Qb-MpK">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -221,35 +221,6 @@
             </objects>
             <point key="canvasLocation" x="-1550" y="88"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SoundStats" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-y6-cYk">
-                                <rect key="frame" x="136" y="441" width="158" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Connect to music">
-                                    <color key="baseBackgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="Hai-1B-NqF" kind="show" id="UtS-oY-qIQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="kC9-HR-iVo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-147.90697674418604" y="87.553648068669531"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="q39-2y-cqZ">
             <objects>
@@ -262,7 +233,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="C3m-AF-b7n"/>
+                        <segue destination="Hai-1B-NqF" kind="relationship" relationship="rootViewController" id="AiP-Bl-ye0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTa-iL-QER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -307,17 +278,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTb-Dr-hf6">
-                                <rect key="frame" x="115" y="589" width="200" height="44"/>
+                                <rect key="frame" x="91" y="568" width="248" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="GIY-g6-2F1"/>
+                                    <constraint firstAttribute="width" constant="248" id="PfK-vx-bfd"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Connect to Spotify">
-                                            <attributes>
-                                                <font key="NSFont" size="21" name="KohinoorBangla-Regular"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="filled" title="Connect to Spotify">
+                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="21"/>
+                                    <color key="baseBackgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="connectWithSpotifyPressed:" destination="Hai-1B-NqF" eventType="touchUpInside" id="626-zv-TRi"/>
@@ -327,20 +296,13 @@
                                 <rect key="frame" x="91" y="424" width="248" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="GkH-1t-yHK"/>
+                                    <constraint firstAttribute="width" constant="248" id="VQ5-1Q-FC6"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Connect to Apple Music">
-                                            <attributes>
-                                                <font key="NSFont" size="21" name="KohinoorBangla-Regular"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="filled" title="Connect to Apple Music">
+                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="21"/>
+                                    <color key="baseBackgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="fFI-Zk-0cl" kind="show" id="SPo-uM-w1O"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cvT-QT-DKc"/>
@@ -355,6 +317,7 @@
                             <constraint firstItem="o1L-cG-irQ" firstAttribute="centerX" secondItem="kF0-Us-5zf" secondAttribute="centerX" id="sa5-Gd-0Zq"/>
                             <constraint firstItem="kF0-Us-5zf" firstAttribute="top" secondItem="o1L-cG-irQ" secondAttribute="bottom" constant="24" id="saL-9w-SyJ"/>
                             <constraint firstItem="mhh-hH-ocR" firstAttribute="centerX" secondItem="o1L-cG-irQ" secondAttribute="centerX" id="uUS-Na-OqS"/>
+                            <constraint firstItem="rTb-Dr-hf6" firstAttribute="top" secondItem="kF0-Us-5zf" secondAttribute="bottom" constant="79" id="yS9-1b-uVG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tnq-6J-Rsv"/>
@@ -364,21 +327,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he9-mc-y1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1186" y="88"/>
+            <point key="canvasLocation" x="1184.6511627906978" y="87.553648068669531"/>
         </scene>
         <!--Friends Feed-->
         <scene sceneID="1kf-vf-M6R">
             <objects>
-                <viewController id="4Yn-u4-Gpd" sceneMemberID="viewController">
+                <viewController id="4Yn-u4-Gpd" customClass="FriendsFeedViewController" customModule="SoundStats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fz9-6h-1JG">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="849"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends Feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn0-5w-5hM">
-                                <rect key="frame" x="165.66666666666666" y="414" width="98.999999999999972" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends Feed: This is currently a stretch goal! Check out our other tabs for more " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn0-5w-5hM">
+                                <rect key="frame" x="128.66666666666666" y="333" width="172.99999999999997" height="183"/>
+                                <color key="backgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="99" id="3TZ-RP-sxb"/>
-                                    <constraint firstAttribute="height" constant="21" id="VCy-d6-AoI"/>
+                                    <constraint firstAttribute="width" constant="173" id="Tkq-pa-1zg"/>
+                                    <constraint firstAttribute="height" constant="183" id="ml6-1m-Zdy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -388,8 +352,8 @@
                         <viewLayoutGuide key="safeArea" id="EK9-VQ-RWK"/>
                         <color key="backgroundColor" red="0.1061258689" green="0.1132665053" blue="0.1333360076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="kn0-5w-5hM" firstAttribute="centerY" secondItem="fz9-6h-1JG" secondAttribute="centerY" id="UcV-tP-4CC"/>
-                            <constraint firstItem="kn0-5w-5hM" firstAttribute="centerX" secondItem="fz9-6h-1JG" secondAttribute="centerX" id="sjf-Lc-hXL"/>
+                            <constraint firstItem="kn0-5w-5hM" firstAttribute="centerX" secondItem="fz9-6h-1JG" secondAttribute="centerX" id="bPY-eI-clD"/>
+                            <constraint firstItem="kn0-5w-5hM" firstAttribute="centerY" secondItem="fz9-6h-1JG" secondAttribute="centerY" id="fA5-yQ-cg5"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends Feed" image="person.3.fill" catalog="system" id="Fx6-25-3qD">
@@ -438,16 +402,33 @@
                                     <constraint firstAttribute="height" constant="122" id="hdz-7h-3rc"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QM-OY-ceM">
+                                <rect key="frame" x="328" y="724" width="46" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52.329999999999998" id="L7M-MB-KtN"/>
+                                    <constraint firstAttribute="width" constant="46" id="NUN-Gz-HLa"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="square.and.arrow.up.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="gradientPressed:" destination="Wk1-We-rz8" eventType="touchUpInside" id="8gG-UL-mgP"/>
+                                    <action selector="sharePressed:" destination="xA3-QV-f1M" eventType="touchUpInside" id="2C2-7f-vzh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dad-Fg-qhm"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="dad-Fg-qhm" firstAttribute="trailing" secondItem="9QM-OY-ceM" secondAttribute="trailing" constant="56" id="2ev-NF-N4H"/>
                             <constraint firstItem="VbD-1Z-C33" firstAttribute="centerY" secondItem="XbO-Bs-3KR" secondAttribute="centerY" id="3lv-dX-cWh"/>
                             <constraint firstItem="iqq-Rz-fFr" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="Grp-eC-IW6"/>
+                            <constraint firstItem="9QM-OY-ceM" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="622" id="HfE-pa-1Kt"/>
                             <constraint firstItem="iqq-Rz-fFr" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" id="MdE-0u-nhe"/>
                             <constraint firstItem="VbD-1Z-C33" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="cgu-tK-Rha"/>
+                            <constraint firstItem="9QM-OY-ceM" firstAttribute="leading" secondItem="dad-Fg-qhm" secondAttribute="leading" constant="328" id="vpK-Hv-zPy"/>
                             <constraint firstItem="pMf-bn-mjp" firstAttribute="top" secondItem="iqq-Rz-fFr" secondAttribute="bottom" constant="24" id="xZ8-ES-8Sk"/>
                             <constraint firstItem="pMf-bn-mjp" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="yrw-Ol-zN0"/>
+                            <constraint firstItem="dad-Fg-qhm" firstAttribute="bottom" secondItem="9QM-OY-ceM" secondAttribute="bottom" constant="71.666666666666629" id="zUs-dd-ffB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="IbX-0h-Bgp">
@@ -458,6 +439,7 @@
                         <outlet property="imageView" destination="pMf-bn-mjp" id="eV4-mB-DDw"/>
                         <outlet property="loading" destination="VbD-1Z-C33" id="ylf-P9-sNU"/>
                         <outlet property="segVC" destination="iqq-Rz-fFr" id="1IR-Zn-6TK"/>
+                        <outlet property="shareButton" destination="9QM-OY-ceM" id="5Ta-Vm-cer"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Iu-k5-tfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -805,9 +787,6 @@
             <point key="canvasLocation" x="2787" y="88"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="cWq-lh-LIc"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="BlankProfile" width="640" height="640"/>
@@ -815,6 +794,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <image name="star.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

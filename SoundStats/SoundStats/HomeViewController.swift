@@ -5,12 +5,15 @@ import CoreData
 class HomeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var segVC: UISegmentedControl!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     var currentColor: String!
+    var darkMode: Bool!
     var mainTemplate = PlacidSDK.template(withIdentifier: "qlmhe8hvu")
     var moodTemplate = PlacidSDK.template(withIdentifier: "wf1xyvyhu")
     var topSongsTemplate = PlacidSDK.template(withIdentifier: "1jrtyolls")
     var trackArray:[Track] = []
+    var curImage: UIImage!
     
     
     //rgba(130,99,255,255)
@@ -38,6 +41,13 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(animated)
         getPreferences()
         currentColor = preferences.value(forKey: "color") as? String
+        darkMode = preferences.value(forKey: "darkMode") as? Bool
+        if (darkMode){
+            view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
+        } else {
+            self.view.backgroundColor = UIColor.lightGray
+        }
+        
         setColorScheme()
         
         switch segVC.selectedSegmentIndex {
@@ -156,10 +166,10 @@ class HomeViewController: UIViewController {
         let artistImage = topSongsTemplate?.pictureLayer(named: "ArtistImage")
         if(trackArray.count > 0) {
             let artists = getArtistString(artistList: trackArray[0].artists)
-            
             let curArtist = trackArray[0].artists[0]
             
             if(curArtist.images != nil){
+                print((curArtist.images?[0].url)!)
                 artistImage?.imageURL = URL(string: (curArtist.images?[0].url)!)
             }
             songTitle?.text = "\(trackArray[0].name)"
@@ -199,10 +209,13 @@ class HomeViewController: UIViewController {
         loadMainData()
         imageView.isHidden = true
         loading.startAnimating()
+        shareButton.isHidden = true
         mainTemplate!.renderImage(completion: { [weak self] mainImage in
             self?.imageView.image = mainImage
+            self?.curImage = mainImage
             self?.loading.stopAnimating()
             self?.imageView.isHidden = false
+            self?.shareButton.isHidden = false
         })
     }
     
@@ -210,10 +223,13 @@ class HomeViewController: UIViewController {
         loadMoodData()
         imageView.isHidden = true
         loading.startAnimating()
+        shareButton.isHidden = true
         moodTemplate!.renderImage(completion: { [weak self] moodImage in
             self?.imageView.image = moodImage
+            self?.curImage = moodImage
             self?.loading.stopAnimating()
             self?.imageView.isHidden = false
+            self?.shareButton.isHidden = false
         })
     }
     
@@ -221,10 +237,13 @@ class HomeViewController: UIViewController {
         loadTopSongsData()
         imageView.isHidden = true
         loading.startAnimating()
+        shareButton.isHidden = true
         topSongsTemplate!.renderImage(completion: { [weak self] topSongsImage in
             self?.imageView.image = topSongsImage
+            self?.curImage = topSongsImage
             self?.loading.stopAnimating()
             self?.imageView.isHidden = false
+            self?.shareButton.isHidden = false
         })
         
     }
@@ -343,5 +362,16 @@ class HomeViewController: UIViewController {
             }
         }
         }
+    
+    //https://stackoverflow.com/questions/35931946/basic-example-for-sharing-text-or-image-with-uiactivityviewcontroller-in-swift
+    @IBAction func sharePressed(_ sender: Any) {
+        // set up activity view controller
+        let imageToShare = [ curImage! ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
 }
