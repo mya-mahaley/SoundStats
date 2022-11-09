@@ -9,7 +9,9 @@ import UIKit
 import FirebaseAuth
 
 
-
+struct darkMode {
+    static var darkMode = true
+}
 
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,12 +19,13 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
   
     @IBOutlet weak var notificationSwitch: UISwitch!
     
+    
     @IBOutlet weak var imageView: UIImageView!
     let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         imagePicker.delegate = self
         
 
@@ -36,6 +39,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
     }
+    
+
 
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
         imagePicker.allowsEditing = false
@@ -90,6 +95,19 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    @IBOutlet weak var darkModeSwitch: UISwitch!
+    
+    @IBAction func darkModeSwitch(_ sender: Any) {
+        if darkModeSwitch.isOn {
+            darkMode.darkMode = true
+            view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
+        } else{
+            darkMode.darkMode = false
+            view.backgroundColor = UIColor.lightGray
+            
+        }
+    }
+    
     
     @IBAction func logOutPressed(_ sender: UIButton) {
         
@@ -105,6 +123,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
-   
+    
 
 }

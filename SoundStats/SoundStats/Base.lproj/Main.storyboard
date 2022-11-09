@@ -629,6 +629,9 @@
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoF-aI-5XZ">
                                 <rect key="frame" x="291" y="381" width="51" height="31"/>
+                                <connections>
+                                    <action selector="darkModeSwitch:" destination="ieb-Jd-0Wa" eventType="valueChanged" id="wnU-wX-XTf"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d34-hn-QMi">
                                 <rect key="frame" x="291" y="457" width="51" height="31"/>
@@ -766,6 +769,7 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="hgf-GG-cst"/>
                     <connections>
+                        <outlet property="darkModeSwitch" destination="VoF-aI-5XZ" id="X8Z-Sf-4A3"/>
                         <outlet property="imageView" destination="2cC-Or-Rmn" id="qiy-2E-hP9"/>
                         <outlet property="logoutButton" destination="spS-In-CPh" id="odn-Do-LxK"/>
                         <outlet property="notificationSwitch" destination="fFR-xJ-Not" id="HBr-n2-M1p"/>

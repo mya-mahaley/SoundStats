@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     var topSongsTemplate = PlacidSDK.template(withIdentifier: "1jrtyolls")
     var trackArray:[Track] = []
 
+   
     
     
     //rgba(130,99,255,255)
@@ -41,8 +42,17 @@ class HomeViewController: UIViewController {
         setColorScheme()
         loadMainImage()
     }
+   
     
     override func viewDidAppear(_ animated: Bool) {
+        let mode = darkMode.darkMode
+        if (mode){
+            view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
+            
+        } else {
+            self.view.backgroundColor = UIColor.lightGray
+        }
+        
         super.viewDidAppear(animated)
         getPreferences()
         
