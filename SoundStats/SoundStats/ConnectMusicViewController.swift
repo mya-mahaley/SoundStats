@@ -153,6 +153,7 @@ class ConnectMusicViewController: UIViewController {
             
             guard response.statusCode == 200 else {
                 print("BAD RESPONSE: ", response.statusCode)
+                print("BAD RESPONSE: ", String(decoding: data!, as: UTF8.self))
                 return
             }
             
@@ -315,7 +316,7 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
         print("app remote did establish connection")
         DispatchQueue.main.async {
-//            self.clearCoreData()
+            self.clearCoreData()
             self.getUserTopTracks(completionHandler: {
                 tracks, error in
                 guard error == nil else {

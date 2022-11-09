@@ -1,10 +1,3 @@
-//
-//  HomeViewController.swift
-//  SoundStats
-//
-//  Created by Mya Mahaley on 11/7/22.
-//
-
 import UIKit
 import Placid
 import CoreData
@@ -18,8 +11,6 @@ class HomeViewController: UIViewController {
     var moodTemplate = PlacidSDK.template(withIdentifier: "wf1xyvyhu")
     var topSongsTemplate = PlacidSDK.template(withIdentifier: "1jrtyolls")
     var trackArray:[Track] = []
-
-   
     
     
     //rgba(130,99,255,255)
@@ -35,27 +26,17 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*mainTemplate?.preload()
-         moodTemplate?.preload()
-         topSongsTemplate?.preload()*/
+        mainTemplate?.preload()
+        moodTemplate?.preload()
+        topSongsTemplate?.preload()
         populateTopTracks()
         setColorScheme()
         loadMainImage()
     }
-   
     
     override func viewDidAppear(_ animated: Bool) {
-        let mode = darkMode.darkMode
-        if (mode){
-            view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
-            
-        } else {
-            self.view.backgroundColor = UIColor.lightGray
-        }
-        
         super.viewDidAppear(animated)
         getPreferences()
-        
         currentColor = preferences.value(forKey: "color") as? String
         setColorScheme()
         
@@ -93,6 +74,35 @@ class HomeViewController: UIViewController {
         let rotation = mainTemplate?.rectangleLayer(named: "RotationBackground")
         rotation?.backgroundColor = color
         
+    }
+    
+    
+    private func topSongsBackground(color: UIColor) {
+        let background = topSongsTemplate?.rectangleLayer(named: "SongBackground")
+        background?.backgroundColor = color
+    }
+    
+    
+    
+    private func moodBackground(color: UIColor){
+        let background = moodTemplate?.rectangleLayer(named: "MainstreamBackground")
+        background?.backgroundColor = color
+    }
+    
+    private func getArtistString(artistList: [Artist]) -> String {
+        var result = ""
+        var i = 0
+        for artist in artistList {
+            result.append(artist.name)
+            if(i < artistList.count - 1){
+                result.append(", ")
+            }
+            i += 1
+        }
+        return result
+    }
+    
+    private func loadMainData(){
         let song1 = mainTemplate?.textLayer(named: "Song1Text")
         if(trackArray.count > 0) {
             let song1Artists = getArtistString(artistList: trackArray[0].artists)
@@ -137,24 +147,10 @@ class HomeViewController: UIViewController {
             song5?.text = "N/A"
         }
     }
-    
-    private func getArtistString(artistList: [Artist]) -> String {
-        var result = ""
-        var i = 0
-        for artist in artistList {
-            result.append(artist.name)
-            if(i < artistList.count - 1){
-                result.append(", ")
-            }
-            i += 1
-        }
-        return result
-    }
-    
-    private func topSongsBackground(color: UIColor) {
-        let background = topSongsTemplate?.rectangleLayer(named: "SongBackground")
-        background?.backgroundColor = color
+    private func loadMoodData(){
         
+    }
+    private func loadTopSongsData(){
         let songTitle = topSongsTemplate?.textLayer(named: "SongTitle")
         let artistName = topSongsTemplate?.textLayer(named: "ArtistName")
         let artistImage = topSongsTemplate?.pictureLayer(named: "ArtistImage")
@@ -174,11 +170,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
-    private func moodBackground(color: UIColor){
-        let background = moodTemplate?.rectangleLayer(named: "MainstreamBackground")
-        background?.backgroundColor = color
-    }
     
     private func setColorScheme() {
         switch currentColor {
@@ -205,6 +196,7 @@ class HomeViewController: UIViewController {
         }
     }
     func loadMainImage() {
+        loadMainData()
         imageView.isHidden = true
         loading.startAnimating()
         mainTemplate!.renderImage(completion: { [weak self] mainImage in
@@ -215,6 +207,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadMoodImage() {
+        loadMoodData()
         imageView.isHidden = true
         loading.startAnimating()
         moodTemplate!.renderImage(completion: { [weak self] moodImage in
@@ -225,6 +218,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadTopSongsImage() {
+        loadTopSongsData()
         imageView.isHidden = true
         loading.startAnimating()
         topSongsTemplate!.renderImage(completion: { [weak self] topSongsImage in
@@ -236,9 +230,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func segChanged(_ sender: Any) {
-        
         setColorScheme()
-        print(currentColor ?? "j")
         switch segVC.selectedSegmentIndex {
             case 0:
                 loadMainImage()
@@ -325,28 +317,31 @@ class HomeViewController: UIViewController {
         var trackItems:[NSManagedObject] = []
         print("TRACK ITEMS \(fetchedResults.count)")
         for track in fetchedResults {
-            var collectionName = track.value(forKey: "collectionName") as! String
+            let collectionName = track.value(forKey: "collectionName") as! String
             if (collectionName == "userTopTracks") {
                 trackItems.append(track)
             }
         }
         
-        var tracks = trackItems[0].value(forKey: "tracks") as! NSSet
-      
-        for trackObj in tracks {
-            let track = trackObj as! NSManagedObject
-            let trackName = track.value(forKey: "name") as! String
-            let trackID = track.value(forKey: "id") as! String
-                var artistArray:[Artist] = []
-                let artists = track.value(forKey: "artists") as! NSSet
-                for artistObj in artists {
-                    let artist = artistObj as! NSManagedObject
-                    let artistName = artist.value(forKey: "name") as! String
-                    let artistID = artist.value(forKey: "id") as! String
-                    artistArray.append(Artist(name: artistName, id: artistID))
-                }
+        if(!trackItems.isEmpty){
+            let tracks = trackItems[0].value(forKey: "tracks") as! NSSet
+          
+            for trackObj in tracks {
+                let track = trackObj as! NSManagedObject
+                let trackName = track.value(forKey: "name") as! String
+                let trackID = track.value(forKey: "id") as! String
+                    var artistArray:[Artist] = []
+                    let artists = track.value(forKey: "artists") as! NSSet
+                    for artistObj in artists {
+                        let artist = artistObj as! NSManagedObject
+                        let artistName = artist.value(forKey: "name") as! String
+                        let artistID = artist.value(forKey: "id") as! String
+                        artistArray.append(Artist(name: artistName, id: artistID))
+                    }
 
-                trackArray.append(Track(name: trackName, id: trackID, artists: artistArray))
+                    trackArray.append(Track(name: trackName, id: trackID, artists: artistArray))
+            }
         }
-    }
+        }
+        
 }
