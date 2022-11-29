@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     var topSongsTemplate = PlacidSDK.template(withIdentifier: "1jrtyolls")
     var trackArray:[Track] = []
     var curImage: UIImage!
+    var delegate : ConnectMusicViewController!
     
     
     //rgba(130,99,255,255)
@@ -154,9 +155,10 @@ class HomeViewController: UIViewController {
             song5?.text = "N/A"
         }
     }
+    
     private func loadMoodData(){
-        
     }
+    
     private func loadTopSongsData(){
         let songTitle = topSongsTemplate?.textLayer(named: "SongTitle")
         let artistName = topSongsTemplate?.textLayer(named: "ArtistName")
@@ -177,6 +179,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+
     
     private func setColorScheme() {
         switch currentColor {

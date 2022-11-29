@@ -75,12 +75,11 @@ class ConnectMusicViewController: UIViewController {
         guard let sessionManager = sessionManager else { return }
         sessionManager.initiateSession(with: scopes, options: .default)
         performSegue(withIdentifier: "homePageSegueID", sender: nil)
-        
     }
     
-    func getTopArtists() {
-        print("web api call")
-        guard let url = URL(string: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=5") else {
+    func getCurrentSong(completionHandler: @escaping(CurrentTrack?, Error?) -> Void) {
+        print("getting current song")
+        guard let url = URL(string: "https://api.spotify.com/v1/me/player/currently-playing") else {
             return
         }
         var request = URLRequest(url: url)
@@ -89,10 +88,11 @@ class ConnectMusicViewController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
         
-        URLSession.shared.dataTask(with: request, completionHandler: {
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {
             data, response, error in
             guard error == nil else {
                 print("ERROR: ", error!)
+                completionHandler(nil, error)
                 return
             }
             
@@ -103,6 +103,7 @@ class ConnectMusicViewController: UIViewController {
             
             guard response.statusCode == 200 else {
                 print("BAD RESPONSE: ", response.statusCode)
+                print("BAD RESPONSE: ", String(decoding: data!, as: UTF8.self))
                 return
             }
             
@@ -110,21 +111,20 @@ class ConnectMusicViewController: UIViewController {
                 print("NO DATA")
                 return
             }
-            
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let artists = try decoder.decode(ArtistItem.self, from: data)
-                for artist in artists.items {
-                    print("ARTIST:", artist.name)
-                    for image in artist.images! {
-                        print(image.url)
-                    }
-                }
+                let tracks = try decoder.decode(CurrentTrack.self, from: data)
+                completionHandler(tracks, nil)
             } catch {
                 print("CATCH: ", error)
+                completionHandler(nil, error)
             }
-        }).resume()
+        })
+        
+        task.resume()
     }
     
     func getUserTopTracks(completionHandler: @escaping(TrackItem?, Error?) -> Void) {
@@ -277,6 +277,56 @@ class ConnectMusicViewController: UIViewController {
         task.resume()
     }
     
+    func getCurrentTrackInfo(id: String, completionHandler: @escaping(AudioFeatures?, Error?) -> Void) {
+        print("getting current track info")
+        guard let url = URL(string: "https://api.spotify.com/v1/audio-features/\(id)") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {
+            data, response, error in
+            guard error == nil else {
+                print("ERROR: ", error!)
+                completionHandler(nil, error)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                print("NO RESPONSE")
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                print("BAD RESPONSE: ", response.statusCode)
+                return
+            }
+            
+            guard let data = data else {
+                print("NO DATA")
+                return
+            }
+            
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let audioFeatures = try decoder.decode(AudioFeatures.self, from: data)
+                completionHandler(audioFeatures, nil)
+            } catch {
+                print("CATCH: ", error)
+                completionHandler(nil, error)
+            }
+        })
+        
+        task.resume()
+    }
     
     func clearCoreData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -327,6 +377,28 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                     print("loading user top tracks to core data")
                     self.loadTracksToCoreData(tracks: tracks!, collectionName: "userTopTracks")
                 }
+            })
+            self.getCurrentSong(completionHandler: {
+                currentTrack, error in
+                print("completion handler for current song")
+                guard let track = currentTrack else {
+                    return
+                }
+                print(track.item.href)
+                print(track.item.name)
+                let artists:[Artist] = track.item.artists
+                for artist in artists {
+                    print(artist.name)
+                }
+                
+                self.getCurrentTrackInfo(id: track.item.id, completionHandler: {
+                    audioFeatures, error in
+                    guard let info = audioFeatures else {
+                        return
+                    }
+                    
+                    print("valence", info.valence)
+                })
             })
 
             self.getChartTracks(completionHandler: {
