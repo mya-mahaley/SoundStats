@@ -50,7 +50,7 @@
                                 </attributedString>
                                 <color key="highlightedColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEv-DK-2nA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEv-DK-2nA">
                                 <rect key="frame" x="97" y="732" width="236" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="S7L-Bg-w9X"/>
@@ -152,22 +152,7 @@
                                     <action selector="googleButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="Huv-vW-B31"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ph-Lx-Pao">
-                                <rect key="frame" x="138" y="519" width="154" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="4W7-lk-Lyn"/>
-                                    <constraint firstAttribute="width" constant="154" id="9gk-wd-54V"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Continue with Facebook">
-                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="11"/>
-                                    <color key="baseBackgroundColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="facebookButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="sbf-Al-at8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-pv-Zo6">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-pv-Zo6">
                                 <rect key="frame" x="138" y="800" width="154" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="154" id="3tx-DR-LUX"/>
@@ -204,10 +189,7 @@
                             <constraint firstItem="kr9-OK-BUw" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="j5v-lA-6Im"/>
                             <constraint firstItem="wCl-bY-BgN" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="kFQ-zi-KEM"/>
                             <constraint firstItem="bNy-U0-Hak" firstAttribute="top" secondItem="wCl-bY-BgN" secondAttribute="bottom" constant="49" id="l8t-4A-sp2"/>
-                            <constraint firstItem="0ph-Lx-Pao" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="l98-gc-Zyb"/>
-                            <constraint firstItem="0ph-Lx-Pao" firstAttribute="top" secondItem="UyG-yo-cPE" secondAttribute="bottom" constant="14" id="n1Q-sN-NiX"/>
                             <constraint firstItem="L2y-yt-b61" firstAttribute="leading" secondItem="J1C-5t-wif" secondAttribute="trailing" constant="12" id="u9K-yt-xXA"/>
-                            <constraint firstItem="bEv-DK-2nA" firstAttribute="top" secondItem="0ph-Lx-Pao" secondAttribute="bottom" constant="178" id="zmo-Ni-3HW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0gb-Lj-LxN"/>

@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import CoreData
+import FirebaseCore
 
 
 struct darkMode {
@@ -21,6 +22,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var notificationSwitch: UISwitch!
     var preferences: NSManagedObject!
     var darkModeStatus: Bool!
+    let user = Auth.auth().currentUser
+    //let storage = Storage.storage()
     
     @IBOutlet weak var imageView: UIImageView!
     let imagePicker = UIImagePickerController()
@@ -28,7 +31,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        
+        let image = user?.photoURL
+        if(image != nil){
+            load(url: image!)
+        }
 
         UNUserNotificationCenter.current().requestAuthorization(options:[.alert,.badge,.sound]){
             pass, error in
@@ -38,6 +44,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
                 print(error.localizedDescription)
             }
         }
+        
+        
         
     }
     
@@ -55,6 +63,17 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.imageView.image = image
+                    }
+                }
+            }
+        }
+    }
 
 
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
@@ -68,7 +87,17 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = pickedImage
-                let user = Auth.auth().currentUser
+                let photoLocalUrl = (info[UIImagePickerController.InfoKey.imageURL] as? URL)!
+                
+                let changeRequest = user?.createProfileChangeRequest()
+                changeRequest?.photoURL = photoLocalUrl
+                print("PICKED:\(photoLocalUrl)")
+                changeRequest?.commitChanges { error in
+                  if let error = error {
+                    print(error)
+                  } else {
+                  }
+                }
                 
             }
             

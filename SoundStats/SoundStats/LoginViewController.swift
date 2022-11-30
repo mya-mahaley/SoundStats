@@ -153,7 +153,4 @@ class LoginViewController: UIViewController {
         }
 
     }
-    @IBAction func facebookButtonPressed(_ sender: Any) {
- 
-    }
 }

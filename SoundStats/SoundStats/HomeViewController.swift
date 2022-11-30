@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     var valence:Double = 0.0
     var mainstreamScore: Double = 0.0
     var mainstreamCategory: String = ""
+    var commonTracks = 0
     var curImage: UIImage!
     var delegate : ConnectMusicViewController!
     var username: String?
@@ -136,6 +137,9 @@ class HomeViewController: UIViewController {
     }
     
     private func loadMainData(){
+        let userBlurb = mainTemplate?.textLayer(named: "userBlurb")
+        userBlurb?.text = "\(username ?? "user"), \(commonTracks) of your top songs appear in the global charts ..."
+        
         let song1 = mainTemplate?.textLayer(named: "Song1Text")
         if(trackArray.count > 0) {
             let song1Artists = getArtistString(artistList: trackArray[0].artists)
@@ -182,16 +186,38 @@ class HomeViewController: UIViewController {
     }
     
     private func loadMoodData(){
+        let userBlurb = moodTemplate?.textLayer(named: "userBlurb")
+        userBlurb?.text = "\(username ?? "user"), based on your listening habits, we've noticed that your current mood is"
+        
+
+        var moodText = ""
+        if(valence >= 0.0 && valence < 0.3) {
+            moodText = "Depressed\n😢"
+        } else if (valence >= 0.3 && valence < 0.5){
+            moodText = "Melancholy\n😪"
+        } else if (valence >= 0.5 && valence < 0.7){
+            moodText = "Neutral\n😌"
+        } else if (valence >= 0.7 && valence < 0.84){
+            moodText = "Content\n😌"
+        } else {
+            moodText = "Euphoric\n🤪"
+        }
+        
+        let mood = moodTemplate?.textLayer(named: "Mood")
+        mood?.text = moodText
     }
     
     private func loadTopSongsData(){
         let songTitle = topSongsTemplate?.textLayer(named: "SongTitle")
         let artistName = topSongsTemplate?.textLayer(named: "ArtistName")
         let artistImage = topSongsTemplate?.pictureLayer(named: "ArtistImage")
+        let userBlurb = topSongsTemplate?.textLayer(named: "userBlurb")
+        userBlurb?.text = "\(username ?? "user"), based on your listening habits, we've noticed that your current mood is"
         if(trackArray.count > 0) {
             let artists = getArtistString(artistList: trackArray[0].artists)
+            print("artists:\(trackArray[0].artists.count)")
             let curArtist = trackArray[0].artists[0]
-            
+            print("followers:\(curArtist.followers?.total ?? 666)")
             if(curArtist.images != nil){
                 print((curArtist.images?[0].url)!)
                 artistImage?.imageURL = URL(string: (curArtist.images?[0].url)!)
@@ -451,8 +477,10 @@ class HomeViewController: UIViewController {
         }
         
         let capacity = similarTracksName.count
-        mainstreamScore = (Double(capacity)/50.0)*100.0
-        switch (capacity){
+        commonTracks = capacity
+        let topTracksLength = Double(trackArray.count)
+        mainstreamScore = (Double(capacity)/topTracksLength)*100.0
+        switch (mainstreamScore){
         case 0:
             mainstreamCategory = "underground underground"
             print(mainstreamCategory)
