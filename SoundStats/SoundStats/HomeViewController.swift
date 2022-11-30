@@ -341,7 +341,7 @@ class HomeViewController: UIViewController {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AudioFeatures")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AudioFeature")
             var fetchedResults:[NSManagedObject]? = nil
             
             do {

@@ -77,18 +77,9 @@ class ConnectMusicViewController: UIViewController {
         performSegue(withIdentifier: "homePageSegueID", sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("preparing for segue", segue.identifier!, segue.identifier! == "homePageSegueID")
-        if segue.identifier! == "homePageSegueID"  {
-            print("ITS WORKING")
-            print(type(of: segue.destination))
-        }
-        
-    }
-    
     func getUserTopTracks(completionHandler: @escaping(TrackItem?, Error?) -> Void) {
         print("calling spotify web api")
-        guard let url = URL(string: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50") else {
+        guard let url = URL(string: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50") else {
             return
         }
         var request = URLRequest(url: url)
@@ -184,7 +175,7 @@ class ConnectMusicViewController: UIViewController {
                                 })
                                 
                                 print("avg: \(valenceAvg)")
-                                let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeatures", into: context)
+                                let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeature", into: context)
                                 audioFeature.setValue(valenceAvg, forKey: "valence")
                             }
                         })
