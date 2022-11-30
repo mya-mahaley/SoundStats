@@ -12,6 +12,7 @@
 		580360B728FB8760007170C6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 580360B628FB8760007170C6 /* FirebaseDatabase */; };
 		580360B928FB8760007170C6 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 580360B828FB8760007170C6 /* FirebaseDatabaseSwift */; };
 		580360BB28FB892A007170C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580360BA28FB892A007170C6 /* LoginViewController.swift */; };
+		581840952937A9FD003B7702 /* AudioFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581840942937A9FD003B7702 /* AudioFeatures.swift */; };
 		583799A42919EBA900F53B9A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583799A32919EBA900F53B9A /* HomeViewController.swift */; };
 		584A5ABC28FB7AA600A9F371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A5ABB28FB7AA600A9F371 /* AppDelegate.swift */; };
 		584A5ABE28FB7AA600A9F371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A5ABD28FB7AA600A9F371 /* SceneDelegate.swift */; };
@@ -54,6 +55,7 @@
 		580360B128FB85DD007170C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		580360BA28FB892A007170C6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		580360BC28FB9A8D007170C6 /* SoundStats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SoundStats.entitlements; sourceTree = "<group>"; };
+		581840942937A9FD003B7702 /* AudioFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeatures.swift; sourceTree = "<group>"; };
 		583799A32919EBA900F53B9A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		584A5AB828FB7AA600A9F371 /* SoundStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		584A5ABB28FB7AA600A9F371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				9D67057728FD9D800049AFC1 /* SpotifyiOS.xcframework */,
 				9D73E1462911D2B40027865A /* TrackItem.swift */,
 				9D55D3D72915F79700D62568 /* ArtistItem.swift */,
+				581840942937A9FD003B7702 /* AudioFeatures.swift */,
 			);
 			path = SoundStats;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				58C96B4D291A1CCD00FC742D /* CustomizationViewController.swift in Sources */,
 				9D73E1472911D2B40027865A /* TrackItem.swift in Sources */,
 				9D55D3D82915F79700D62568 /* ArtistItem.swift in Sources */,
+				581840952937A9FD003B7702 /* AudioFeatures.swift in Sources */,
 				584A5AC028FB7AA600A9F371 /* ViewController.swift in Sources */,
 				9DB5257728FCD35F002E2A49 /* ConnectMusicViewController.swift in Sources */,
 				584A5ABC28FB7AA600A9F371 /* AppDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Artist" representedClassName="Artist" syncable="YES">
         <attribute name="externalUrl" optional="YES" attributeType="String"/>
         <attribute name="followers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -13,7 +13,7 @@
     <entity name="ArtistItem" representedClassName="ArtistItem" syncable="YES">
         <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artist" inverseName="artistsArray" inverseEntity="Artist"/>
     </entity>
-    <entity name="AudioFeatures" representedClassName="AudioFeatures" syncable="YES" codeGenerationType="class">
+    <entity name="AudioFeatures" representedClassName="AudioFeatures" syncable="YES">
         <attribute name="valence" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Color" representedClassName="Color" syncable="YES" codeGenerationType="class"/>

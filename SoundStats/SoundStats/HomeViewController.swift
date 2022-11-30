@@ -362,7 +362,7 @@ class HomeViewController: UIViewController {
             if (!fetchedResults.isEmpty){
                 let feature = fetchedResults[0]
                 valence = feature.value(forKey: "valence") as! Double
-                print("VALENCE:\(valence)")
+                print("VALENCE!:\(valence)")
             }
         }
     
@@ -450,7 +450,7 @@ class HomeViewController: UIViewController {
             }
         }
         
-        let capacity = similarTracksName.capacity
+        let capacity = similarTracksName.count
         mainstreamScore = (Double(capacity)/50.0)*100.0
         switch (capacity){
         case 0:

@@ -165,21 +165,30 @@ class ConnectMusicViewController: UIViewController {
                 
                 if collectionName == "userTopTracks" {
                     var valences : [Double] = []
-
+                    var i = 0
                     for track in tracks.items {
                         self.getCurrentTrackInfo(id: track.id, completionHandler: {
                             track, error in
                             guard let trackInfo = track else {
                                 return
                             }
+                            i = 1 + i
+                            print("valences[\(i)]: \(trackInfo.valence)")
                             valences.append(trackInfo.valence)
+                            print("valence size: \(valences.count)")
+                            
+                            if(i == tracks.items.count){
+                                print("final valence size: \(valences.count)")
+                                let valenceAvg = valences.reduce(0.0, {
+                                    return $0 + $1 / Double(tracks.items.count)
+                                })
+                                
+                                print("avg: \(valenceAvg)")
+                                let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeatures", into: context)
+                                audioFeature.setValue(valenceAvg, forKey: "valence")
+                            }
                         })
                     }
-                    
-                    let valenceAvg = valences.reduce(0.0, {
-                        return $0 + $1 / Double(tracks.items.count)
-                    })
-                    let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeatures", into: context)
                 }
                 
                 for track in tracks.items {
