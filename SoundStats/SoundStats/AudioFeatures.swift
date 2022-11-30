@@ -8,8 +8,8 @@
 import Foundation
 
 struct AudioFeatures: Codable {
-    let valence: Float
-    let liveness: Float
-    let danceability: Float
-    let energy: Float
+    let valence: Double
+    let liveness: Double
+    let danceability: Double
+    let energy: Double
 }

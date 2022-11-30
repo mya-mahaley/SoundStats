@@ -77,54 +77,13 @@ class ConnectMusicViewController: UIViewController {
         performSegue(withIdentifier: "homePageSegueID", sender: nil)
     }
     
-    func getCurrentSong(completionHandler: @escaping(CurrentTrack?, Error?) -> Void) {
-        print("getting current song")
-        guard let url = URL(string: "https://api.spotify.com/v1/me/player/currently-playing") else {
-            return
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("preparing for segue", segue.identifier!, segue.identifier! == "homePageSegueID")
+        if segue.identifier! == "homePageSegueID"  {
+            print("ITS WORKING")
+            print(type(of: segue.destination))
         }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: request, completionHandler: {
-            data, response, error in
-            guard error == nil else {
-                print("ERROR: ", error!)
-                completionHandler(nil, error)
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse else {
-                print("NO RESPONSE")
-                return
-            }
-            
-            guard response.statusCode == 200 else {
-                print("BAD RESPONSE: ", response.statusCode)
-                print("BAD RESPONSE: ", String(decoding: data!, as: UTF8.self))
-                return
-            }
-            
-            guard let data = data else {
-                print("NO DATA")
-                return
-            }
-            let str = String(decoding: data, as: UTF8.self)
-            print(str)
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let tracks = try decoder.decode(CurrentTrack.self, from: data)
-                completionHandler(tracks, nil)
-            } catch {
-                print("CATCH: ", error)
-                completionHandler(nil, error)
-            }
-        })
-        
-        task.resume()
     }
     
     func getUserTopTracks(completionHandler: @escaping(TrackItem?, Error?) -> Void) {
@@ -203,6 +162,25 @@ class ConnectMusicViewController: UIViewController {
                 let context = appDelegate.persistentContainer.viewContext
                 let trackItem = NSEntityDescription.insertNewObject(forEntityName: "TrackItem", into: context)
                 trackItem.setValue(collectionName, forKey: "collectionName")
+                
+                if collectionName == "userTopTracks" {
+                    var valences : [Double] = []
+
+                    for track in tracks.items {
+                        self.getCurrentTrackInfo(id: track.id, completionHandler: {
+                            track, error in
+                            guard let trackInfo = track else {
+                                return
+                            }
+                            valences.append(trackInfo.valence)
+                        })
+                    }
+                    
+                    let valenceAvg = valences.reduce(0.0, {
+                        return $0 + $1 / Double(tracks.items.count)
+                    })
+                    let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeatures", into: context)
+                }
                 
                 for track in tracks.items {
                     let oneTrack = NSEntityDescription.insertNewObject(forEntityName: "Track", into: context)
@@ -378,28 +356,6 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                     self.loadTracksToCoreData(tracks: tracks!, collectionName: "userTopTracks")
                 }
             })
-            self.getCurrentSong(completionHandler: {
-                currentTrack, error in
-                print("completion handler for current song")
-                guard let track = currentTrack else {
-                    return
-                }
-                print(track.item.href)
-                print(track.item.name)
-                let artists:[Artist] = track.item.artists
-                for artist in artists {
-                    print(artist.name)
-                }
-                
-                self.getCurrentTrackInfo(id: track.item.id, completionHandler: {
-                    audioFeatures, error in
-                    guard let info = audioFeatures else {
-                        return
-                    }
-                    
-                    print("valence", info.valence)
-                })
-            })
 
             self.getChartTracks(completionHandler: {
                 playlist, error in
@@ -547,6 +503,7 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
 //        updateViewBasedOnConnected()
         lastPlayerState = nil
+        print("FAILED TO CONNECT TO SPOTIFY")
     }
 }
 

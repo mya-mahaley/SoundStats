@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "signInSegueID", sender: nil)
                 self.emailField.text = nil
                 self.passwordField.text = nil
+                self.passwordField.isSecureTextEntry = true
             }
         }
         
