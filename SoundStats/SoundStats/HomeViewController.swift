@@ -1,6 +1,7 @@
 import UIKit
 import Placid
 import CoreData
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
@@ -13,8 +14,13 @@ class HomeViewController: UIViewController {
     var moodTemplate = PlacidSDK.template(withIdentifier: "wf1xyvyhu")
     var topSongsTemplate = PlacidSDK.template(withIdentifier: "1jrtyolls")
     var trackArray:[Track] = []
+    var globalTrackArrary:[Track] = []
+    var valence:Double = 0.0
+    var mainstreamScore: Double = 0.0
+    var mainstreamCategory: String = ""
     var curImage: UIImage!
     var delegate : ConnectMusicViewController!
+    var username: String?
     
     
     //rgba(130,99,255,255)
@@ -30,10 +36,26 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let user = Auth.auth().currentUser
+        username = user?.displayName
+        if(username == nil){
+            let changeRequest = user?.createProfileChangeRequest()
+            changeRequest?.displayName = "tempusername"
+            username = "tempusername"
+            changeRequest?.commitChanges { error in
+              if let error = error {
+                print(error)
+              } else {
+              }
+            }
+        }
+        
         mainTemplate?.preload()
         moodTemplate?.preload()
         topSongsTemplate?.preload()
         populateTopTracks()
+        calculateMainstreamScore()
+        populateValence()
         setColorScheme()
         loadMainImage()
     }
@@ -154,6 +176,9 @@ class HomeViewController: UIViewController {
         } else {
             song5?.text = "N/A"
         }
+        
+        let score = mainTemplate?.textLayer(named: "MainstreamScore")
+        score?.text = "Mainstream Score: \(Int(mainstreamScore))%"
     }
     
     private func loadMoodData(){
@@ -312,6 +337,35 @@ class HomeViewController: UIViewController {
         return(fetchedResults)!
     }
     
+    private func getAudioFeatures() -> [NSManagedObject] {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AudioFeatures")
+            var fetchedResults:[NSManagedObject]? = nil
+            
+            do {
+                try fetchedResults = context.fetch(request) as? [NSManagedObject]
+            } catch {
+                // if an error occurs
+                let nserror = error as NSError
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                abort()
+            }
+            
+            return(fetchedResults)!
+        }
+        
+        private func populateValence(){
+            let fetchedResults = getAudioFeatures()
+            //var trackItems:[NSManagedObject] = []
+            if (!fetchedResults.isEmpty){
+                let feature = fetchedResults[0]
+                valence = feature.value(forKey: "valence") as! Double
+                print("VALENCE:\(valence)")
+            }
+        }
+    
     private func getTrackItem() ->[NSManagedObject] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -334,10 +388,13 @@ class HomeViewController: UIViewController {
     private func populateTopTracks() {
         let fetchedResults = getTrackItem()
         var trackItems:[NSManagedObject] = []
+        var globalTrackItems:[NSManagedObject] = []
         for track in fetchedResults {
             let collectionName = track.value(forKey: "collectionName") as! String
             if (collectionName == "userTopTracks") {
                 trackItems.append(track)
+            } else {
+                globalTrackItems.append(track)
             }
         }
         
@@ -348,19 +405,83 @@ class HomeViewController: UIViewController {
                 let track = trackObj as! NSManagedObject
                 let trackName = track.value(forKey: "name") as! String
                 let trackID = track.value(forKey: "id") as! String
-                    var artistArray:[Artist] = []
-                    let artists = track.value(forKey: "artists") as! NSSet
-                    for artistObj in artists {
-                        let artist = artistObj as! NSManagedObject
-                        let artistName = artist.value(forKey: "name") as! String
-                        let artistID = artist.value(forKey: "id") as! String
-                        artistArray.append(Artist(name: artistName, id: artistID))
-                    }
+                var artistArray:[Artist] = []
+                let artists = track.value(forKey: "artists") as! NSSet
+                for artistObj in artists {
+                    let artist = artistObj as! NSManagedObject
+                    let artistName = artist.value(forKey: "name") as! String
+                    let artistID = artist.value(forKey: "id") as! String
+                    artistArray.append(Artist(name: artistName, id: artistID))
+                }
 
-                    trackArray.append(Track(name: trackName, id: trackID, artists: artistArray))
+                trackArray.append(Track(name: trackName, id: trackID, artists: artistArray))
             }
         }
+        
+        if(!globalTrackItems.isEmpty){
+            let tracks = globalTrackItems[0].value(forKey: "tracks") as! NSSet
+          
+            for trackObj in tracks {
+                let track = trackObj as! NSManagedObject
+                let trackName = track.value(forKey: "name") as! String
+                let trackID = track.value(forKey: "id") as! String
+                var artistArray:[Artist] = []
+                let artists = track.value(forKey: "artists") as! NSSet
+                for artistObj in artists {
+                    let artist = artistObj as! NSManagedObject
+                    let artistName = artist.value(forKey: "name") as! String
+                    let artistID = artist.value(forKey: "id") as! String
+                    artistArray.append(Artist(name: artistName, id: artistID))
+                }
+                globalTrackArrary.append(Track(name: trackName, id: trackID, artists: artistArray))
+            }
         }
+}
+    
+    private func calculateMainstreamScore(){
+        var similarTracksName = [String]()
+        for track in trackArray {
+            let idOne = track.id
+            for trackTwo in globalTrackArrary {
+                let idTwo = trackTwo.id
+                if idOne == idTwo {
+                    similarTracksName.append(track.name)
+                }
+            }
+        }
+        
+        let capacity = similarTracksName.capacity
+        mainstreamScore = (Double(capacity)/50.0)*100.0
+        switch (capacity){
+        case 0:
+            mainstreamCategory = "underground underground"
+            print(mainstreamCategory)
+            break
+        case 1...10:
+            mainstreamCategory = "underground"
+            print(mainstreamCategory)
+            break
+        case 11...20:
+            mainstreamCategory = "moderate"
+            print(mainstreamCategory)
+            break
+        case 21...30:
+            mainstreamCategory = "perfect mix of both"
+            print(mainstreamCategory)
+            break
+        case 31...40:
+            mainstreamCategory = "pretty trendy"
+            print(mainstreamCategory)
+            break
+        case 41...50:
+            mainstreamCategory = "super trendy"
+            print(mainstreamCategory)
+            break
+        default:
+            print("something went wrong")
+            
+        }
+    }
     
     //https://stackoverflow.com/questions/35931946/basic-example-for-sharing-text-or-image-with-uiactivityviewcontroller-in-swift
     @IBAction func sharePressed(_ sender: Any) {

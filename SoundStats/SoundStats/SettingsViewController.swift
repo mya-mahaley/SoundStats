@@ -68,6 +68,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = pickedImage
+                let user = Auth.auth().currentUser
+                
             }
             
             dismiss(animated: true, completion: nil)

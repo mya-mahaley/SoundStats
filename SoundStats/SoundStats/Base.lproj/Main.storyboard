@@ -403,7 +403,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QM-OY-ceM">
-                                <rect key="frame" x="328" y="725" width="46" height="52.333333333333371"/>
+                                <rect key="frame" x="328" y="724" width="46" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52.329999999999998" id="L7M-MB-KtN"/>
                                     <constraint firstAttribute="width" constant="46" id="NUN-Gz-HLa"/>

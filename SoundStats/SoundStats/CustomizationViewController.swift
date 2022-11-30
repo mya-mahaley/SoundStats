@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+
 class CustomizationViewController: UIViewController {
 
     @IBOutlet weak var gradientButton: UIButton!
@@ -15,6 +16,7 @@ class CustomizationViewController: UIViewController {
     @IBOutlet weak var purpleButton: UIButton!
     @IBOutlet weak var salmonButton: UIButton!
     @IBOutlet weak var tealButton: UIButton!
+    
     var preferences: NSManagedObject!
     var currentColor: String!
     var darkMode: Bool!
