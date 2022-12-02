@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.passwordField.isSecureTextEntry = true
         
         Auth.auth().addStateDidChangeListener() {
             auth, user in
@@ -76,6 +77,7 @@ class LoginViewController: UIViewController {
             let nameField = alert.textFields![0]
             let emailField = alert.textFields![1]
             let passwordField = alert.textFields![2]
+            
             
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) {
                 authResult, error in
