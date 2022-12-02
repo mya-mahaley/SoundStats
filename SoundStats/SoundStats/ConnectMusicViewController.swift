@@ -75,61 +75,11 @@ class ConnectMusicViewController: UIViewController {
         guard let sessionManager = sessionManager else { return }
         sessionManager.initiateSession(with: scopes, options: .default)
         performSegue(withIdentifier: "homePageSegueID", sender: nil)
-        
-    }
-    
-    func getTopArtists() {
-        print("web api call")
-        guard let url = URL(string: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=5") else {
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
-        
-        URLSession.shared.dataTask(with: request, completionHandler: {
-            data, response, error in
-            guard error == nil else {
-                print("ERROR: ", error!)
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse else {
-                print("NO RESPONSE")
-                return
-            }
-            
-            guard response.statusCode == 200 else {
-                print("BAD RESPONSE: ", response.statusCode)
-                return
-            }
-            
-            guard let data = data else {
-                print("NO DATA")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let artists = try decoder.decode(ArtistItem.self, from: data)
-                for artist in artists.items {
-                    print("ARTIST:", artist.name)
-                    for image in artist.images! {
-                        print(image.url)
-                    }
-                }
-            } catch {
-                print("CATCH: ", error)
-            }
-        }).resume()
     }
     
     func getUserTopTracks(completionHandler: @escaping(TrackItem?, Error?) -> Void) {
         print("calling spotify web api")
-        guard let url = URL(string: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50") else {
+        guard let url = URL(string: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50") else {
             return
         }
         var request = URLRequest(url: url)
@@ -204,6 +154,34 @@ class ConnectMusicViewController: UIViewController {
                 let trackItem = NSEntityDescription.insertNewObject(forEntityName: "TrackItem", into: context)
                 trackItem.setValue(collectionName, forKey: "collectionName")
                 
+                if collectionName == "userTopTracks" {
+                    var valences : [Double] = []
+                    var i = 0
+                    for track in tracks.items {
+                        self.getCurrentTrackInfo(id: track.id, completionHandler: {
+                            track, error in
+                            guard let trackInfo = track else {
+                                return
+                            }
+                            i = 1 + i
+                            print("valences[\(i)]: \(trackInfo.valence)")
+                            valences.append(trackInfo.valence)
+                            print("valence size: \(valences.count)")
+                            
+                            if(i == tracks.items.count){
+                                print("final valence size: \(valences.count)")
+                                let valenceAvg = valences.reduce(0.0, {
+                                    return $0 + $1 / Double(tracks.items.count)
+                                })
+                                
+                                print("avg: \(valenceAvg)")
+                                let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeature", into: context)
+                                audioFeature.setValue(valenceAvg, forKey: "valence")
+                            }
+                        })
+                    }
+                }
+                
                 for track in tracks.items {
                     let oneTrack = NSEntityDescription.insertNewObject(forEntityName: "Track", into: context)
                     oneTrack.setValue(track.name, forKey: "name")
@@ -277,6 +255,56 @@ class ConnectMusicViewController: UIViewController {
         task.resume()
     }
     
+    func getCurrentTrackInfo(id: String, completionHandler: @escaping(AudioFeatures?, Error?) -> Void) {
+        print("getting current track info")
+        guard let url = URL(string: "https://api.spotify.com/v1/audio-features/\(id)") else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {
+            data, response, error in
+            guard error == nil else {
+                print("ERROR: ", error!)
+                completionHandler(nil, error)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                print("NO RESPONSE")
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                print("BAD RESPONSE: ", response.statusCode)
+                return
+            }
+            
+            guard let data = data else {
+                print("NO DATA")
+                return
+            }
+            
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let audioFeatures = try decoder.decode(AudioFeatures.self, from: data)
+                completionHandler(audioFeatures, nil)
+            } catch {
+                print("CATCH: ", error)
+                completionHandler(nil, error)
+            }
+        })
+        
+        task.resume()
+    }
     
     func clearCoreData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -475,6 +503,7 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
 //        updateViewBasedOnConnected()
         lastPlayerState = nil
+        print("FAILED TO CONNECT TO SPOTIFY")
     }
 }
 

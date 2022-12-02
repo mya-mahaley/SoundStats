@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.passwordField.isSecureTextEntry = true
         
         Auth.auth().addStateDidChangeListener() {
             auth, user in
@@ -23,6 +24,7 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "signInSegueID", sender: nil)
                 self.emailField.text = nil
                 self.passwordField.text = nil
+                self.passwordField.isSecureTextEntry = true
             }
         }
         
@@ -58,6 +60,10 @@ class LoginViewController: UIViewController {
             message: "Register",
             preferredStyle: .alert)
         alert.addTextField {
+            tfName in
+            tfName.placeholder = "Enter your name"
+        }
+        alert.addTextField {
             tfEmail in
             tfEmail.placeholder = "Enter your email"
         }
@@ -68,8 +74,10 @@ class LoginViewController: UIViewController {
         }
         let saveAction = UIAlertAction(title: "Save", style: .default) {
             _ in
-            let emailField = alert.textFields![0]
-            let passwordField = alert.textFields![1]
+            let nameField = alert.textFields![0]
+            let emailField = alert.textFields![1]
+            let passwordField = alert.textFields![2]
+            
             
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) {
                 authResult, error in
@@ -81,8 +89,19 @@ class LoginViewController: UIViewController {
                     
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true)
+                } else {
+                    let user = Auth.auth().currentUser
+                    let changeRequest = user?.createProfileChangeRequest()
+                    changeRequest?.displayName = nameField.text!
+                    changeRequest?.commitChanges { error in
+                      if let error = error {
+                        print(error)
+                      } else {
+                      }
+                    }
                 }
             }
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(saveAction)
@@ -135,8 +154,5 @@ class LoginViewController: UIViewController {
             }
         }
 
-    }
-    @IBAction func facebookButtonPressed(_ sender: Any) {
- 
     }
 }

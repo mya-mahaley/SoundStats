@@ -152,21 +152,6 @@
                                     <action selector="googleButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="Huv-vW-B31"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ph-Lx-Pao">
-                                <rect key="frame" x="138" y="519" width="154" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="4W7-lk-Lyn"/>
-                                    <constraint firstAttribute="width" constant="154" id="9gk-wd-54V"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Continue with Facebook">
-                                    <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="11"/>
-                                    <color key="baseBackgroundColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="facebookButtonPressed:" destination="iN8-Qb-MpK" eventType="touchUpInside" id="sbf-Al-at8"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-pv-Zo6">
                                 <rect key="frame" x="138" y="800" width="154" height="35"/>
                                 <constraints>
@@ -186,8 +171,11 @@
                         <viewLayoutGuide key="safeArea" id="ilY-yu-2aY"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ilY-yu-2aY" firstAttribute="bottom" secondItem="bEv-DK-2nA" secondAttribute="bottom" constant="95" id="1Fc-ex-8KT"/>
                             <constraint firstItem="kr9-OK-BUw" firstAttribute="top" secondItem="Yr9-7e-CKM" secondAttribute="bottom" constant="53" id="3lh-5S-wbj"/>
+                            <constraint firstItem="ilY-yu-2aY" firstAttribute="trailing" secondItem="bEv-DK-2nA" secondAttribute="trailing" constant="97" id="67f-am-4gD"/>
                             <constraint firstItem="J1C-5t-wif" firstAttribute="leading" secondItem="ilY-yu-2aY" secondAttribute="leading" constant="58" id="8Kb-80-nww"/>
+                            <constraint firstItem="bEv-DK-2nA" firstAttribute="top" secondItem="ilY-yu-2aY" secondAttribute="top" constant="629" id="92n-gF-04L"/>
                             <constraint firstItem="RBE-t6-3id" firstAttribute="leading" secondItem="ilY-yu-2aY" secondAttribute="leading" constant="23.999999999999993" id="9Zv-sW-ixE"/>
                             <constraint firstItem="J1C-5t-wif" firstAttribute="top" secondItem="ilY-yu-2aY" secondAttribute="top" constant="188" id="BkE-kE-zBX"/>
                             <constraint firstItem="L2y-yt-b61" firstAttribute="top" secondItem="bNy-U0-Hak" secondAttribute="bottom" constant="40" id="C2h-Tx-aWa"/>
@@ -204,10 +192,8 @@
                             <constraint firstItem="kr9-OK-BUw" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="j5v-lA-6Im"/>
                             <constraint firstItem="wCl-bY-BgN" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="kFQ-zi-KEM"/>
                             <constraint firstItem="bNy-U0-Hak" firstAttribute="top" secondItem="wCl-bY-BgN" secondAttribute="bottom" constant="49" id="l8t-4A-sp2"/>
-                            <constraint firstItem="0ph-Lx-Pao" firstAttribute="centerX" secondItem="MKs-6U-cTL" secondAttribute="centerX" id="l98-gc-Zyb"/>
-                            <constraint firstItem="0ph-Lx-Pao" firstAttribute="top" secondItem="UyG-yo-cPE" secondAttribute="bottom" constant="14" id="n1Q-sN-NiX"/>
                             <constraint firstItem="L2y-yt-b61" firstAttribute="leading" secondItem="J1C-5t-wif" secondAttribute="trailing" constant="12" id="u9K-yt-xXA"/>
-                            <constraint firstItem="bEv-DK-2nA" firstAttribute="top" secondItem="0ph-Lx-Pao" secondAttribute="bottom" constant="178" id="zmo-Ni-3HW"/>
+                            <constraint firstItem="bEv-DK-2nA" firstAttribute="leading" secondItem="ilY-yu-2aY" secondAttribute="leading" constant="97" id="yOK-ol-ufa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0gb-Lj-LxN"/>
@@ -337,23 +323,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="849"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends Feed: This is currently a stretch goal! Check out our other tabs for more " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn0-5w-5hM">
-                                <rect key="frame" x="128.66666666666666" y="333" width="172.99999999999997" height="183"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends Feed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn0-5w-5hM">
+                                <rect key="frame" x="28" y="103" width="382" height="38"/>
                                 <color key="backgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="173" id="Tkq-pa-1zg"/>
-                                    <constraint firstAttribute="height" constant="183" id="ml6-1m-Zdy"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsFeed" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-Ux-soK">
+                                <rect key="frame" x="39" y="149" width="360" height="640"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="640" id="9Me-h7-ApO"/>
+                                    <constraint firstAttribute="width" constant="360" id="J0f-wC-Tz5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EK9-VQ-RWK"/>
                         <color key="backgroundColor" red="0.1061258689" green="0.1132665053" blue="0.1333360076" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="kn0-5w-5hM" firstAttribute="centerX" secondItem="fz9-6h-1JG" secondAttribute="centerX" id="bPY-eI-clD"/>
-                            <constraint firstItem="kn0-5w-5hM" firstAttribute="centerY" secondItem="fz9-6h-1JG" secondAttribute="centerY" id="fA5-yQ-cg5"/>
+                            <constraint firstItem="fV1-Ux-soK" firstAttribute="leading" secondItem="EK9-VQ-RWK" secondAttribute="leading" constant="39" id="3Rd-QS-jWP"/>
+                            <constraint firstItem="EK9-VQ-RWK" firstAttribute="bottom" secondItem="kn0-5w-5hM" secondAttribute="bottom" constant="708" id="87W-LW-L2v"/>
+                            <constraint firstItem="kn0-5w-5hM" firstAttribute="leading" secondItem="EK9-VQ-RWK" secondAttribute="leading" constant="28" id="Bbh-b0-mjN"/>
+                            <constraint firstItem="EK9-VQ-RWK" firstAttribute="trailing" secondItem="fV1-Ux-soK" secondAttribute="trailing" constant="31" id="HwQ-Gs-JRF"/>
+                            <constraint firstItem="EK9-VQ-RWK" firstAttribute="bottom" secondItem="fV1-Ux-soK" secondAttribute="bottom" constant="60" id="L7z-Gk-huN"/>
+                            <constraint firstItem="EK9-VQ-RWK" firstAttribute="trailing" secondItem="kn0-5w-5hM" secondAttribute="trailing" constant="20" id="UzV-cz-HSf"/>
+                            <constraint firstItem="kn0-5w-5hM" firstAttribute="top" secondItem="EK9-VQ-RWK" secondAttribute="top" id="XqF-s6-jRt"/>
+                            <constraint firstItem="fV1-Ux-soK" firstAttribute="top" secondItem="EK9-VQ-RWK" secondAttribute="top" constant="46" id="jHV-wk-A82"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends Feed" image="person.3.fill" catalog="system" id="Fx6-25-3qD">
@@ -403,7 +398,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QM-OY-ceM">
-                                <rect key="frame" x="328" y="725" width="46" height="52.333333333333371"/>
+                                <rect key="frame" x="328" y="724" width="46" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52.329999999999998" id="L7M-MB-KtN"/>
                                     <constraint firstAttribute="width" constant="46" id="NUN-Gz-HLa"/>
@@ -664,6 +659,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spS-In-CPh">
                                 <rect key="frame" x="170.33333333333334" y="604" width="89.666666666666657" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled">
@@ -698,8 +694,9 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqM-Y4-PCg">
-                                <rect key="frame" x="98" y="526" width="234.66666666666663" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqM-Y4-PCg">
+                                <rect key="frame" x="99" y="526" width="234.66666666666663" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled">
@@ -793,6 +790,7 @@
     <resources>
         <image name="BlankProfile" width="640" height="640"/>
         <image name="Gradient" width="288" height="150"/>
+        <image name="friendsFeed" width="456" height="700"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>

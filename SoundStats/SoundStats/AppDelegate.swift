@@ -10,7 +10,7 @@ import CoreData
 import FirebaseCore
 import GoogleSignIn
 import Placid
-
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
