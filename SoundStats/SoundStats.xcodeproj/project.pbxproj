@@ -35,6 +35,7 @@
 		9D73E1472911D2B40027865A /* TrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D73E1462911D2B40027865A /* TrackItem.swift */; };
 		9DB5257728FCD35F002E2A49 /* ConnectMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB5257628FCD35F002E2A49 /* ConnectMusicViewController.swift */; };
 		9DC50F9F28FCABFC00D2E627 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC50F9E28FCABFC00D2E627 /* SpotifyConstants.swift */; };
+		9DFCF092293BF1FA004B3BC0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DFCF091293BF1FA004B3BC0 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +90,7 @@
 				5867C1B228FC934D00F84F69 /* GoogleSignIn in Frameworks */,
 				580360B728FB8760007170C6 /* FirebaseDatabase in Frameworks */,
 				58C96B41291A0A7400FC742D /* Placid in Frameworks */,
+				9DFCF092293BF1FA004B3BC0 /* FirebaseStorage in Frameworks */,
 				9D67057D28FE0BF90049AFC1 /* SpotifyiOS.xcframework in Frameworks */,
 				580360B528FB8760007170C6 /* FirebaseAuth in Frameworks */,
 			);
@@ -102,6 +104,7 @@
 			children = (
 				584A5ABA28FB7AA600A9F371 /* SoundStats */,
 				584A5AB928FB7AA600A9F371 /* Products */,
+				9DFCF090293BF1FA004B3BC0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +147,13 @@
 			path = SoundStats;
 			sourceTree = "<group>";
 		};
+		9DFCF090293BF1FA004B3BC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,6 +178,7 @@
 				5867C1B128FC934D00F84F69 /* GoogleSignIn */,
 				5867C1B328FC934D00F84F69 /* GoogleSignInSwift */,
 				58C96B40291A0A7400FC742D /* Placid */,
+				9DFCF091293BF1FA004B3BC0 /* FirebaseStorage */,
 			);
 			productName = SoundStats;
 			productReference = 584A5AB828FB7AA600A9F371 /* SoundStats.app */;
@@ -395,7 +406,7 @@
 				CODE_SIGN_ENTITLEMENTS = SoundStats/SoundStats.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8YG5XWSY9;
+				DEVELOPMENT_TEAM = MM4H27H36D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundStats",
@@ -414,7 +425,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = myamahaley.SoundStats;
+				PRODUCT_BUNDLE_IDENTIFIER = evelynvo.SoundStats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundStats/SoundStats-Bridging-Header.h";
@@ -434,7 +445,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8YG5XWSY9;
+				DEVELOPMENT_TEAM = MM4H27H36D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundStats",
@@ -453,7 +464,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = myamahaley.SoundStats;
+				PRODUCT_BUNDLE_IDENTIFIER = evelynvo.SoundStats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -543,6 +554,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 58C96B3F291A0A7300FC742D /* XCRemoteSwiftPackageReference "placid-ios" */;
 			productName = Placid;
+		};
+		9DFCF091293BF1FA004B3BC0 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 580360B328FB8760007170C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

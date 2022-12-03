@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Artist" representedClassName="Artist" syncable="YES">
         <attribute name="externalUrl" optional="YES" attributeType="String"/>
         <attribute name="followers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -17,7 +17,6 @@
         <attribute name="valence" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Color" representedClassName="Color" syncable="YES" codeGenerationType="class"/>
-    <entity name="Entity1" representedClassName="Entity1" syncable="YES" codeGenerationType="class"/>
     <entity name="Genres" representedClassName="Genres" syncable="YES">
         <attribute name="genre" optional="YES" attributeType="String"/>
         <relationship name="genresArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="genres" inverseEntity="Artist"/>
@@ -27,10 +26,15 @@
         <attribute name="url" optional="YES" attributeType="String"/>
         <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="images" inverseEntity="Artist"/>
+        <relationship name="track" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TopTrack" inverseName="albumImage" inverseEntity="TopTrack"/>
     </entity>
     <entity name="Preferences" representedClassName="Preferences" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="darkMode" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="TopTrack" representedClassName="TopTrack" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <relationship name="albumImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="track" inverseEntity="Image"/>
     </entity>
     <entity name="Track" representedClassName="Track" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>

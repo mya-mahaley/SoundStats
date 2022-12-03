@@ -1,6 +1,6 @@
 // Connect to Spotify logic taken
 // from Spotify's public repo for their iOS SDK
-// at https://github.com/spotify/ios-sdk 
+// at https://github.com/spotify/ios-sdk
 
 import UIKit
 import CoreData
@@ -68,7 +68,6 @@ class ConnectMusicViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        updateViewBasedOnConnected()
     }
     
     @IBAction func connectWithSpotifyPressed(_ sender: Any) {
@@ -79,7 +78,7 @@ class ConnectMusicViewController: UIViewController {
     
     func getUserTopTracks(completionHandler: @escaping(TrackItem?, Error?) -> Void) {
         print("calling spotify web api")
-        guard let url = URL(string: "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50") else {
+        guard let url = URL(string: "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50") else {
             return
         }
         var request = URLRequest(url: url)
@@ -156,30 +155,21 @@ class ConnectMusicViewController: UIViewController {
                 
                 if collectionName == "userTopTracks" {
                     var valences : [Double] = []
-                    var i = 0
                     for track in tracks.items {
                         self.getCurrentTrackInfo(id: track.id, completionHandler: {
                             track, error in
                             guard let trackInfo = track else {
                                 return
                             }
-                            i = 1 + i
-                            print("valences[\(i)]: \(trackInfo.valence)")
                             valences.append(trackInfo.valence)
-                            print("valence size: \(valences.count)")
-                            
-                            if(i == tracks.items.count){
-                                print("final valence size: \(valences.count)")
-                                let valenceAvg = valences.reduce(0.0, {
-                                    return $0 + $1 / Double(tracks.items.count)
-                                })
-                                
-                                print("avg: \(valenceAvg)")
-                                let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeature", into: context)
-                                audioFeature.setValue(valenceAvg, forKey: "valence")
-                            }
                         })
                     }
+                    
+                    let valenceAvg = valences.reduce(0.0, {
+                        return $0 + $1 / Double(tracks.items.count)
+                    })
+                    let audioFeature = NSEntityDescription.insertNewObject(forEntityName: "AudioFeature", into: context)
+                    audioFeature.setValue(valenceAvg, forKey: "valence")
                 }
                 
                 for track in tracks.items {
@@ -289,8 +279,8 @@ class ConnectMusicViewController: UIViewController {
                 return
             }
             
-            let str = String(decoding: data, as: UTF8.self)
-            print(str)
+//            let str = String(decoding: data, as: UTF8.self)
+//            print(str)
             
             do {
                 let decoder = JSONDecoder()
@@ -310,8 +300,26 @@ class ConnectMusicViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TrackItem")
+        var request = NSFetchRequest<NSFetchRequestResult>(entityName: "TrackItem")
         var fetchedResults:[NSManagedObject]
+        do {
+            try fetchedResults = context.fetch(request) as! [NSManagedObject]
+            if fetchedResults.count > 0 {
+                for result:AnyObject in fetchedResults {
+                    context.delete(result as! NSManagedObject)
+                }
+            }
+            
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        
+        
+        request = NSFetchRequest<NSFetchRequestResult>(entityName: "AudioFeature")
+        fetchedResults = []
         do {
             try fetchedResults = context.fetch(request) as! [NSManagedObject]
             if fetchedResults.count > 0 {
@@ -356,7 +364,7 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                     self.loadTracksToCoreData(tracks: tracks!, collectionName: "userTopTracks")
                 }
             })
-
+            
             self.getChartTracks(completionHandler: {
                 playlist, error in
                 guard error == nil else {
@@ -491,17 +499,15 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                                   
                               }
             })
-
         }
+        
     }
 
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-//        updateViewBasedOnConnected()
         lastPlayerState = nil
     }
 
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-//        updateViewBasedOnConnected()
         lastPlayerState = nil
         print("FAILED TO CONNECT TO SPOTIFY")
     }

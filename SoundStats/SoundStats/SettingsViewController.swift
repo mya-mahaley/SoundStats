@@ -9,6 +9,9 @@ import UIKit
 import FirebaseAuth
 import CoreData
 import FirebaseCore
+import FirebaseDatabase
+import FirebaseStorage
+
 
 
 struct darkMode {
@@ -23,7 +26,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     var preferences: NSManagedObject!
     var darkModeStatus: Bool!
     let user = Auth.auth().currentUser
-    //let storage = Storage.storage()
+    let dbRef = Storage.storage().reference()
     
     @IBOutlet weak var imageView: UIImageView!
     let imagePicker = UIImagePickerController()
@@ -31,9 +34,17 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        let image = user?.photoURL
-        if(image != nil){
-            load(url: image!)
+        let fileRef = dbRef.child("users").child(user!.uid).child("profileImage.png")
+        fileRef.getData(maxSize: 2 * 1024 * 1024) {
+            data, error in
+            if let error = error {
+                print("error retrieving file from firestore", error)
+            } else {
+                print("loading image from firestore")
+                let imageFile = UIImage(data: data!)
+                self.imageView.image = imageFile
+                
+            }
         }
 
         UNUserNotificationCenter.current().requestAuthorization(options:[.alert,.badge,.sound]){
@@ -96,6 +107,19 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
                   if let error = error {
                     print(error)
                   } else {
+                      let data = pickedImage.jpegData(compressionQuality: 0.8)
+                      guard data != nil else {
+                          return
+                      }
+                      
+                      let fileRef = self.dbRef.child("users").child(self.user!.uid).child("profileImage.png")
+                      let uploadTask = fileRef.putData(data!, metadata: nil) {
+                          metadata, error in
+                          if error == nil && metadata != nil {
+                              // ??
+                          }
+                      }
+                      
                   }
                 }
                 
