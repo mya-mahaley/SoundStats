@@ -78,30 +78,38 @@ class LoginViewController: UIViewController {
             let emailField = alert.textFields![1]
             let passwordField = alert.textFields![2]
             
-            
-            Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) {
-                authResult, error in
-                if let error = error as NSError? {
-                    let alert = UIAlertController(
-                        title: "Issue Signing In",
-                        message: "\(error.localizedDescription)",
-                        preferredStyle: .alert)
-                    
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true)
-                } else {
-                    let user = Auth.auth().currentUser
-                    let changeRequest = user?.createProfileChangeRequest()
-                    changeRequest?.displayName = nameField.text!
-                    changeRequest?.commitChanges { error in
-                      if let error = error {
-                        print(error)
-                      } else {
-                      }
+            if nameField.text == "" || emailField.text == "" || passwordField.text == "" {
+                let alert = UIAlertController(
+                    title: "Missing Information",
+                    message: "Please fill in every field!",
+                    preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true)
+            } else {
+                Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) {
+                    authResult, error in
+                    if let error = error as NSError? {
+                        let alert = UIAlertController(
+                            title: "Issue Signing In",
+                            message: "\(error.localizedDescription)",
+                            preferredStyle: .alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(alert, animated: true)
+                    } else {
+                        let user = Auth.auth().currentUser
+                        let changeRequest = user?.createProfileChangeRequest()
+                        changeRequest?.displayName = nameField.text!
+                        changeRequest?.commitChanges { error in
+                          if let error = error {
+                            print(error)
+                          } else {
+                          }
+                        }
                     }
                 }
             }
-            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(saveAction)

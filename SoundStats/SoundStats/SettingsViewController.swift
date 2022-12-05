@@ -192,6 +192,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         navigationController?.popToRootViewController(animated: true)
         self.performSegue(withIdentifier: "logOutPressed", sender: self)
         
+        
+        
     }
     
     private func getPreferences() {
@@ -260,4 +262,37 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
 
+    @IBAction func changeNamePressed(_ sender: Any) {
+        let alert = UIAlertController(
+            title: "Register",
+            message: "Register",
+            preferredStyle: .alert)
+        alert.addTextField {
+            tfName in
+            tfName.placeholder = "Enter your name"
+        }
+        let saveAction = UIAlertAction(title: "Save", style: .default) {
+            _ in
+            let nameField = alert.textFields![0]
+            let user = Auth.auth().currentUser
+            let changeRequest = user?.createProfileChangeRequest()
+            changeRequest?.displayName = nameField.text!
+            changeRequest?.commitChanges { error in
+                if let error = error {
+                    let alert = UIAlertController(
+                        title: "Issue Changing Name",
+                        message: "\(error.localizedDescription)",
+                        preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
 }
