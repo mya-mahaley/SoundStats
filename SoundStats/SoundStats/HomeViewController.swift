@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
         
         mainTemplate?.preload()
         moodTemplate?.preload()
-        topSongsTemplate?.preload()
+        //topSongsTemplate?.preload()
         populateTopTracks()
         calculateMainstreamScore()
         populateValence()
@@ -138,7 +138,7 @@ class HomeViewController: UIViewController {
     
     private func loadMainData(){
         let userBlurb = mainTemplate?.textLayer(named: "userBlurb")
-        userBlurb?.text = "\(username ?? "user"), \(commonTracks) of your top songs appear in the global charts ..."
+        userBlurb?.text = "\(username ?? "user"), \(commonTracks) of your top songs appear in the global charts ... your music taste is \(mainstreamCategory)"
         
         let song1 = mainTemplate?.textLayer(named: "Song1Text")
         if(trackArray.count > 0) {
@@ -212,7 +212,7 @@ class HomeViewController: UIViewController {
         let artistName = topSongsTemplate?.textLayer(named: "ArtistName")
         let artistImage = topSongsTemplate?.pictureLayer(named: "ArtistImage")
         let userBlurb = topSongsTemplate?.textLayer(named: "userBlurb")
-        userBlurb?.text = "\(username ?? "user"), based on your listening habits, we've noticed that your current mood is"
+        userBlurb?.text = "\(username ?? "user"), we've got some interesting information for you! Your current top song is ..."
         if(trackArray.count > 0) {
             let artists = getArtistString(artistList: trackArray[0].artists)
             print("artists:\(trackArray[0].artists.count)")

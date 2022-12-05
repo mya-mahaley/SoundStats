@@ -62,8 +62,6 @@ class ConnectMusicViewController: UIViewController {
     // MARK: App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        style()
-//        layout()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -110,8 +108,6 @@ class ConnectMusicViewController: UIViewController {
                 print("NO DATA")
                 return
             }
-//            let str = String(decoding: data, as: UTF8.self)
-//            print(str)
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -147,7 +143,6 @@ class ConnectMusicViewController: UIViewController {
     func loadTracksToCoreData(tracks: TrackItem, collectionName: String) {
         DispatchQueue.main.async {
             if tracks.items.count > 0 {
-                print("loading tracks into track item with name", collectionName)
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let context = appDelegate.persistentContainer.viewContext
                 let trackItem = NSEntityDescription.insertNewObject(forEntityName: "TrackItem", into: context)
@@ -228,9 +223,6 @@ class ConnectMusicViewController: UIViewController {
                 return
             }
             
-//            let str = String(decoding: data, as: UTF8.self)
-//            print(str)
-            
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -278,9 +270,6 @@ class ConnectMusicViewController: UIViewController {
                 print("NO DATA")
                 return
             }
-            
-//            let str = String(decoding: data, as: UTF8.self)
-//            print(str)
             
             do {
                 let decoder = JSONDecoder()
@@ -373,8 +362,6 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                 }
 
                 var trackArray:[Track] = []
-
-//                print(playlist!.tracks.items.count)
                 for playlistTrackItem in playlist!.tracks.items {
                     trackArray.append(playlistTrackItem.track)
                 }
@@ -390,11 +377,6 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                     return
                 }
 
-                print("Number of NSManagedObjects", nsManagedObjects!.count)
-
-                    var userTopTracks: TrackItem = TrackItem(items: [])
-                    var globalChartTracks: TrackItem = TrackItem(items: [])
-
                 for obj in nsManagedObjects! {
                     let collectionName = obj.value(forKey: "collectionName") as! String
                         var trackArray:[Track] = []
@@ -404,100 +386,19 @@ extension ConnectMusicViewController: SPTAppRemoteDelegate {
                         let track = trackObj as! NSManagedObject
                         let trackName = track.value(forKey: "name") as! String
                         let trackID = track.value(forKey: "id") as! String
-//                        print(trackName, trackID)
-                            var artistArray:[Artist] = []
-                            let artists = track.value(forKey: "artists") as! NSSet
-//                        print("number of artists: ", artists.count)
-                            for artistObj in artists {
-                                let artist = artistObj as! NSManagedObject
-                                let artistName = artist.value(forKey: "name") as! String
-                                let artistID = artist.value(forKey: "id") as! String
-//                                print(artistName, artistID)
-                                artistArray.append(Artist(name: artistName, id: artistID))
-                            }
-
-                            trackArray.append(Track(name: trackName, id: trackID, artists: artistArray))
-                    }
-
-                        if collectionName == "userTopTracks" {
-                            userTopTracks = TrackItem(items: trackArray)
-                        } else if collectionName == "globalChartTracks" {
-                            globalChartTracks = TrackItem(items: trackArray)
+                        
+                        var artistArray:[Artist] = []
+                        let artists = track.value(forKey: "artists") as! NSSet
+                        for artistObj in artists {
+                            let artist = artistObj as! NSManagedObject
+                            let artistName = artist.value(forKey: "name") as! String
+                            let artistID = artist.value(forKey: "id") as! String
+                            artistArray.append(Artist(name: artistName, id: artistID))
                         }
+
+                        trackArray.append(Track(name: trackName, id: trackID, artists: artistArray))
+                    }
                 }
-
-                    print("user top tracks")
-                    for track in userTopTracks.items {
-                        print(track.name, track.id)
-                        for artist in track.artists {
-                            print(artist.name, artist.id)
-                        }
-                    }
-
-                    print("global chart tracks")
-                    for track in globalChartTracks.items {
-                        print(track.name, track.id)
-                        for artist in track.artists {
-                            print(artist.name, artist.id)
-                        }
-                    }
-                var similarTracksName = [String]()
-                              var similarTracksArtist = [String]()
-                              for track in userTopTracks.items {
-                                  let idOne = track.id
-                                  for trackTwo in globalChartTracks.items {
-                                      let idTwo = trackTwo.id
-                                      if idOne == idTwo {
-                                          similarTracksName.append(track.name)
-                                          for artist in track.artists{
-                                              similarTracksArtist.append(artist.name)
-                                          }
-                                          }
-                                      }
-                                  }
-                              // thought process:
-                              //0 underground undergroud; 1-10 underground; 11-20 moderate
-                              // 21-30 a perfect mix of both; 31-40 pretty trendy; 41-50 super duper trendy
-                              if similarTracksName.isEmpty {
-                                  print("no tracks underground underground")
-                              } else {
-                                  
-                              print("simlar tracks for user top and global chart tracks:")
-                              for name in similarTracksName {
-                                  print("\(name)")
-                              }
-                              }
-                              let capacity = similarTracksName.capacity
-                              switch (capacity){
-                              case 0:
-                                  print("underground underground")
-                                  print("percentage \((capacity/50)*100)%")
-                                  break
-                              case 1...10:
-                                  print("underground")
-                                  print("percentage \((capacity/50)*100)%")
-                                  break
-                              case 11...20:
-                                  print("moderate")
-                                  print("percentage \((capacity/50)*100)%")
-                                  break
-                              case 21...30:
-                                  print("perfect mix of both")
-                                  print("percentage \((capacity/50)*100)%")
-                                  break
-                              case 31...40:
-                                  print("pretty trendy")
-                                  print("percentage \((capacity/50)*100)%")
-                                  break
-                              case 41...50:
-                                  print("super trendy")
-                                  print("percentage \((capacity/50)*100)%")
-                                  break
-                                  
-                              default:
-                                  print("something went wrong")
-                                  
-                              }
             })
         }
         

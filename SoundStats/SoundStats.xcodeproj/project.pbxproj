@@ -23,9 +23,9 @@
 		584A5ACB28FB7AAA00A9F371 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */; };
 		5867C1B228FC934D00F84F69 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B128FC934D00F84F69 /* GoogleSignIn */; };
 		5867C1B428FC934D00F84F69 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5867C1B328FC934D00F84F69 /* GoogleSignInSwift */; };
+		58B65124293DAF1D00620BDB /* templates.placid in Resources */ = {isa = PBXBuildFile; fileRef = 58B65123293DAF1C00620BDB /* templates.placid */; };
 		58B870E2291B4CA300FC3E62 /* FriendsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B870E1291B4CA300FC3E62 /* FriendsFeedViewController.swift */; };
 		58C96B41291A0A7400FC742D /* Placid in Frameworks */ = {isa = PBXBuildFile; productRef = 58C96B40291A0A7400FC742D /* Placid */; };
-		58C96B4B291A176600FC742D /* templates.placid in Resources */ = {isa = PBXBuildFile; fileRef = 58C96B4A291A176600FC742D /* templates.placid */; };
 		58C96B4D291A1CCD00FC742D /* CustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C96B4C291A1CCD00FC742D /* CustomizationViewController.swift */; };
 		99B55E0B291B06A50027392F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B55E0A291B06A50027392F /* SettingsViewController.swift */; };
 		9D4AF4E329183399005C6555 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4AF4E229183399005C6555 /* Playlist.swift */; };
@@ -67,8 +67,8 @@
 		584A5AC728FB7AAA00A9F371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		584A5ACA28FB7AAA00A9F371 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		584A5ACC28FB7AAA00A9F371 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58B65123293DAF1C00620BDB /* templates.placid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = templates.placid; path = ../../templates.placid; sourceTree = "<group>"; };
 		58B870E1291B4CA300FC3E62 /* FriendsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFeedViewController.swift; sourceTree = "<group>"; };
-		58C96B4A291A176600FC742D /* templates.placid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = templates.placid; path = ../../templates.placid; sourceTree = "<group>"; };
 		58C96B4C291A1CCD00FC742D /* CustomizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationViewController.swift; sourceTree = "<group>"; };
 		99B55E0A291B06A50027392F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9D3B42DA28FCAA36007DEEB3 /* SoundStats-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundStats-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -130,8 +130,8 @@
 				99B55E0A291B06A50027392F /* SettingsViewController.swift */,
 				583799A32919EBA900F53B9A /* HomeViewController.swift */,
 				584A5AC728FB7AAA00A9F371 /* Assets.xcassets */,
-				58C96B4A291A176600FC742D /* templates.placid */,
 				584A5AC928FB7AAA00A9F371 /* LaunchScreen.storyboard */,
+				58B65123293DAF1C00620BDB /* templates.placid */,
 				584A5ACC28FB7AAA00A9F371 /* Info.plist */,
 				584A5AC428FB7AA600A9F371 /* SoundStats.xcdatamodeld */,
 				9D4AF4E229183399005C6555 /* Playlist.swift */,
@@ -232,7 +232,7 @@
 				580360B228FB85DD007170C6 /* GoogleService-Info.plist in Resources */,
 				584A5AC828FB7AAA00A9F371 /* Assets.xcassets in Resources */,
 				584A5AC328FB7AA600A9F371 /* Main.storyboard in Resources */,
-				58C96B4B291A176600FC742D /* templates.placid in Resources */,
+				58B65124293DAF1D00620BDB /* templates.placid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +406,7 @@
 				CODE_SIGN_ENTITLEMENTS = SoundStats/SoundStats.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MM4H27H36D;
+				DEVELOPMENT_TEAM = A8YG5XWSY9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoundStats",
@@ -425,7 +425,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = evelynvo.SoundStats;
+				PRODUCT_BUNDLE_IDENTIFIER = myamahaley.SoundStats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SoundStats/SoundStats-Bridging-Header.h";
