@@ -46,6 +46,7 @@ class FriendsFeedViewController: UIViewController {
         
         preferences.setValue("Gradient", forKey: "color")
         preferences.setValue(true, forKey: "darkMode")
+        preferences.setValue(true, forKey: "autoLogin")
     
         
         // commit the changes

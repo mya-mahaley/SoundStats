@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iN8-Qb-MpK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iN8-Qb-MpK">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,7 +51,7 @@
                                 <color key="highlightedColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEv-DK-2nA">
-                                <rect key="frame" x="97" y="688" width="236" height="35.333333333333371"/>
+                                <rect key="frame" x="97" y="688" width="236" height="115"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="S7L-Bg-w9X"/>
                                     <constraint firstAttribute="width" constant="236" id="jlK-sv-6Cq"/>
@@ -153,7 +153,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-pv-Zo6">
-                                <rect key="frame" x="138" y="720.33333333333337" width="154" height="35"/>
+                                <rect key="frame" x="138" y="800" width="154" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="154" id="3tx-DR-LUX"/>
                                     <constraint firstAttribute="height" constant="35" id="XYd-l3-aka"/>
@@ -304,46 +304,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="731"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Find your percentage to determine your mainstream classification!" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riN-1K-CBg">
-                                <rect key="frame" x="51" y="-26" width="298" height="151"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your percentage to determine your mainstream classification!" textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riN-1K-CBg">
+                                <rect key="frame" x="51" y="20" width="298" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="298" id="gz9-X4-GHB"/>
+                                    <constraint firstAttribute="height" constant="54" id="rbO-f0-fIc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MainstreamScore" translatesAutoresizingMaskIntoConstraints="NO" id="ufT-i1-fTw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainstreamScore" translatesAutoresizingMaskIntoConstraints="NO" id="ufT-i1-fTw">
                                 <rect key="frame" x="-5" y="124" width="410" height="237"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="410" id="3Me-HT-yO6"/>
+                                    <constraint firstAttribute="height" constant="237" id="X0U-EF-9Ml"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mainstream Score" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx9-OB-HK5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mainstream Score" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx9-OB-HK5">
                                 <rect key="frame" x="95" y="82" width="210" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Cmr-Zm-I1h"/>
+                                    <constraint firstAttribute="width" constant="210" id="pkL-Jk-E9x"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mood Indicator Score" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3o-Q7-n39">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Indicator Score" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3o-Q7-n39">
                                 <rect key="frame" x="85" y="441" width="230" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="FgO-Oo-Bgn"/>
+                                    <constraint firstAttribute="width" constant="230" id="QYH-Vr-xCt"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mood Indicatior Classifications is based off your average valence rank" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ju-2R-q7K">
-                                <rect key="frame" x="25" y="363" width="351" height="107"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Indicatior Classifications is based off your average valence rank" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ju-2R-q7K">
+                                <rect key="frame" x="24.666666666666657" y="363" width="351" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="EGf-L4-hiL"/>
+                                    <constraint firstAttribute="width" constant="351" id="anS-Kg-giN"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MoodScore" translatesAutoresizingMaskIntoConstraints="NO" id="BYd-IA-dyd">
-                                <rect key="frame" x="4" y="478" width="393" height="243"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoodScore" translatesAutoresizingMaskIntoConstraints="NO" id="BYd-IA-dyd">
+                                <rect key="frame" x="3.6666666666666572" y="478" width="393" height="243"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="393" id="nXz-Vl-GqN"/>
+                                    <constraint firstAttribute="height" constant="243" id="voI-g5-nYe"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DSf-1n-nYx"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="riN-1K-CBg" firstAttribute="centerX" secondItem="Ze4-xJ-UTl" secondAttribute="centerX" id="D8N-As-ptP"/>
+                            <constraint firstItem="d3o-Q7-n39" firstAttribute="centerX" secondItem="Ze4-xJ-UTl" secondAttribute="centerX" id="GSx-VX-5o7"/>
+                            <constraint firstItem="5Ju-2R-q7K" firstAttribute="top" secondItem="ufT-i1-fTw" secondAttribute="bottom" constant="2" id="M7J-wI-8bJ"/>
+                            <constraint firstItem="BYd-IA-dyd" firstAttribute="top" secondItem="d3o-Q7-n39" secondAttribute="bottom" constant="-6" id="M7a-Px-3MM"/>
+                            <constraint firstItem="DSf-1n-nYx" firstAttribute="bottom" secondItem="BYd-IA-dyd" secondAttribute="bottom" constant="10" id="Ocd-OL-goq"/>
+                            <constraint firstItem="BYd-IA-dyd" firstAttribute="centerX" secondItem="Ze4-xJ-UTl" secondAttribute="centerX" id="Qez-6H-Chd"/>
+                            <constraint firstItem="5Ju-2R-q7K" firstAttribute="centerX" secondItem="Ze4-xJ-UTl" secondAttribute="centerX" id="ULd-xe-TXt"/>
+                            <constraint firstItem="ufT-i1-fTw" firstAttribute="centerX" secondItem="Ze4-xJ-UTl" secondAttribute="centerX" id="bkn-tj-lKy"/>
+                            <constraint firstItem="qx9-OB-HK5" firstAttribute="centerX" secondItem="Ze4-xJ-UTl" secondAttribute="centerX" id="bml-fj-dPr"/>
+                            <constraint firstItem="ufT-i1-fTw" firstAttribute="top" secondItem="qx9-OB-HK5" secondAttribute="bottom" constant="-1" id="vg3-GU-bhG"/>
+                            <constraint firstItem="qx9-OB-HK5" firstAttribute="top" secondItem="riN-1K-CBg" secondAttribute="bottom" constant="8" symbolic="YES" id="xCL-Sz-Vgz"/>
+                            <constraint firstItem="d3o-Q7-n39" firstAttribute="top" secondItem="5Ju-2R-q7K" secondAttribute="bottom" constant="8" symbolic="YES" id="xvk-29-kZO"/>
+                        </constraints>
                     </view>
                     <size key="freeformSize" width="400" height="800"/>
                 </viewController>
@@ -426,9 +458,12 @@
                                     <segue destination="Hai-1B-NqF" kind="presentation" identifier="connectID" modalPresentationStyle="fullScreen" id="hzr-mc-fMf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-BW-38O">
-                                <rect key="frame" x="380" y="814" width="50" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-BW-38O">
+                                <rect key="frame" x="367" y="794" width="50" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="2Il-7L-O4z"/>
+                                    <constraint firstAttribute="height" constant="35" id="6p7-3G-owp"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="questionmark.circle" catalog="system" title=""/>
                                 <connections>
@@ -444,9 +479,11 @@
                             <constraint firstItem="VbD-1Z-C33" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="304.66666666666669" id="1tB-EO-iTX"/>
                             <constraint firstItem="9QM-OY-ceM" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="659" id="3L4-3n-AUY"/>
                             <constraint firstItem="pMf-bn-mjp" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="73" id="7wV-y4-ewL"/>
+                            <constraint firstItem="dad-Fg-qhm" firstAttribute="bottom" secondItem="cOQ-BW-38O" secondAttribute="bottom" constant="20" id="BKB-Vt-oTk"/>
                             <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="By3-tC-foJ"/>
                             <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerY" secondItem="XbO-Bs-3KR" secondAttribute="centerY" id="F0r-i4-ZNn"/>
                             <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerY" secondItem="XbO-Bs-3KR" secondAttribute="centerY" id="FsR-6J-6FE"/>
+                            <constraint firstItem="cOQ-BW-38O" firstAttribute="leading" secondItem="dad-Fg-qhm" secondAttribute="leading" constant="367" id="GdU-fL-kYN"/>
                             <constraint firstItem="VbD-1Z-C33" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="HL6-p4-jVx"/>
                             <constraint firstItem="dad-Fg-qhm" firstAttribute="bottom" secondItem="VbD-1Z-C33" secondAttribute="bottom" constant="363.33333333333331" id="X0j-xO-NR3"/>
                             <constraint firstItem="iqq-Rz-fFr" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="Xvf-iZ-Srd"/>
@@ -454,6 +491,7 @@
                             <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="bRg-V2-ndg"/>
                             <constraint firstItem="9QM-OY-ceM" firstAttribute="leading" secondItem="dad-Fg-qhm" secondAttribute="leading" constant="343" id="ksv-mz-zfm"/>
                             <constraint firstItem="iqq-Rz-fFr" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="18" id="rnn-lL-Jlk"/>
+                            <constraint firstItem="dad-Fg-qhm" firstAttribute="trailing" secondItem="cOQ-BW-38O" secondAttribute="trailing" constant="13" id="uEL-m0-rmE"/>
                             <constraint firstItem="dad-Fg-qhm" firstAttribute="bottom" secondItem="9QM-OY-ceM" secondAttribute="bottom" constant="84.666666666666629" id="wbF-dz-WT2"/>
                             <constraint firstItem="pMf-bn-mjp" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="zx2-of-nkE"/>
                         </constraints>
@@ -824,6 +862,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="hzr-mc-fMf"/>
         <segue reference="cWq-lh-LIc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -9,14 +9,27 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 import FirebaseCore
+import CoreData
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
+    var preferences: NSManagedObject!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.passwordField.isSecureTextEntry = true
+        
+        getPreferences()
+        let autoLogin = preferences.value(forKey: "autoLogin") as? Bool
+        if(preferences != nil && autoLogin != nil && autoLogin == false){
+            let firebaseAuth = Auth.auth()
+            do {
+              try firebaseAuth.signOut()
+            } catch let signOutError as NSError {
+              print("Error signing out: %@", signOutError)
+            }
+        }
         
         Auth.auth().addStateDidChangeListener() {
             auth, user in
@@ -30,13 +43,7 @@ class LoginViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        /*let mode = darkMode.darkMode
-        if (mode){
-            view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
-            
-        } else {
-            self.view.backgroundColor = UIColor.lightGray
-        }*/
+
     }
     
     @IBAction func signInButtonPressed(_ sender: Any) {
@@ -162,5 +169,31 @@ class LoginViewController: UIViewController {
             }
         }
 
+    }
+    private func getPreferences() {
+        let fetchedPreferences = retrievePreferences()
+        if(!fetchedPreferences.isEmpty) {
+            preferences = fetchedPreferences[0]
+        } else {
+            preferences = nil
+        }
+    }
+    
+    private func retrievePreferences() -> [NSManagedObject]{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Preferences")
+        var fetchedResults:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            // if an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+        return(fetchedResults)!
     }
 }

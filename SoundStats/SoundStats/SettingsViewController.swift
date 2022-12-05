@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var notificationSwitch: UISwitch!
     var preferences: NSManagedObject!
     var darkModeStatus: Bool!
+    var autoLogin: Bool!
     var user = Auth.auth().currentUser
     let dbRef = Storage.storage().reference()
     
@@ -60,6 +61,13 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidAppear(animated)
         getPreferences()
         darkModeStatus = preferences.value(forKey: "darkMode") as? Bool
+        autoLogin = preferences.value(forKey: "autoLogin") as? Bool
+        if !autoLogin {
+            stayLoginSwitch.isOn = false
+        } else {
+            stayLoginSwitch.isOn = true
+        }
+        
         if(darkModeStatus){
             view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
             darkModeSwitch.isOn = true
@@ -87,7 +95,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
             
-        present(imagePicker, animated: true, completion: nil)    }
+        present(imagePicker, animated: true, completion: nil)
+    }
     
    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -165,7 +174,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func darkModeSwitch(_ sender: Any) {
         if darkModeSwitch.isOn {
-            //darkMode.darkMode = true
             updateDarkMode(mode: true)
             view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
         } else {
@@ -190,16 +198,12 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func stayLoginPressed(_ sender: Any) {
-        if stayLoginSwitch.isOn {
-            
-            } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1000) {
-                    self.logOutPressed(self.logoutButton)
-                }
-                
-            }
+        if !stayLoginSwitch.isOn {
+            updateAutoLogin(mode: false)
+        } else {
+            updateAutoLogin(mode: true)
         }
-    
+    }
     
     private func getPreferences() {
         let fetchedPreferences = retrievePreferences()
@@ -219,6 +223,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
         preferences.setValue("Gradient", forKey: "color")
         preferences.setValue(true, forKey: "darkMode")
+        preferences.setValue(true, forKey: "autoLogin")
         
         // commit the changes
         do {
@@ -253,6 +258,21 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     private func updateDarkMode(mode: Bool){
         preferences.setValue(mode, forKey: "darkMode")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        do {
+            try context.save()
+        }
+        catch {
+            // if an error occurs
+            let nserror = error as NSError
+            NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+            abort()
+        }
+    }
+    
+    private func updateAutoLogin(mode: Bool){
+        preferences.setValue(mode, forKey: "autoLogin")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         do {
