@@ -200,12 +200,12 @@
                     <connections>
                         <outlet property="emailField" destination="L2y-yt-b61" id="wel-ju-sJR"/>
                         <outlet property="passwordField" destination="Yr9-7e-CKM" id="0L5-pf-5Xp"/>
-                        <segue destination="Hai-1B-NqF" kind="presentation" identifier="signInSegueID" modalPresentationStyle="fullScreen" id="02b-3A-yGh"/>
+                        <segue destination="fFI-Zk-0cl" kind="presentation" identifier="signInSegueID" animates="NO" modalPresentationStyle="fullScreen" id="sM4-Po-jjp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQf-Vi-GUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1550" y="88"/>
+            <point key="canvasLocation" x="66" y="88"/>
         </scene>
         <!--Connect Music View Controller-->
         <scene sceneID="ela-UM-YoB">
@@ -294,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he9-mc-y1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184.6511627906978" y="87.553648068669531"/>
+            <point key="canvasLocation" x="1938" y="-424"/>
         </scene>
         <!--Home-->
         <scene sceneID="J3v-gZ-yel">
@@ -348,6 +348,29 @@
                                     <action selector="sharePressed:" destination="xA3-QV-f1M" eventType="touchUpInside" id="2C2-7f-vzh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d4-Ta-f4C">
+                                <rect key="frame" x="91" y="356.66666666666669" width="248" height="136"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="bwA-bp-ieB"/>
+                                    <constraint firstAttribute="height" constant="136" id="c2z-c7-kPJ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="To see your Music Graphics, please select a streaming service!">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="KohinoorBangla-Semibold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseBackgroundColor" red="1" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="connectPressed:" destination="xA3-QV-f1M" eventType="touchUpInside" id="LV8-lk-rd5"/>
+                                    <segue destination="Hai-1B-NqF" kind="presentation" identifier="connectID" modalPresentationStyle="fullScreen" id="hzr-mc-fMf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dad-Fg-qhm"/>
                         <color key="backgroundColor" red="0.1058823529" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -355,10 +378,14 @@
                             <constraint firstItem="VbD-1Z-C33" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="304.66666666666669" id="1tB-EO-iTX"/>
                             <constraint firstItem="9QM-OY-ceM" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="659" id="3L4-3n-AUY"/>
                             <constraint firstItem="pMf-bn-mjp" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="73" id="7wV-y4-ewL"/>
+                            <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="By3-tC-foJ"/>
+                            <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerY" secondItem="XbO-Bs-3KR" secondAttribute="centerY" id="F0r-i4-ZNn"/>
+                            <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerY" secondItem="XbO-Bs-3KR" secondAttribute="centerY" id="FsR-6J-6FE"/>
                             <constraint firstItem="VbD-1Z-C33" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="HL6-p4-jVx"/>
                             <constraint firstItem="dad-Fg-qhm" firstAttribute="bottom" secondItem="VbD-1Z-C33" secondAttribute="bottom" constant="363.33333333333331" id="X0j-xO-NR3"/>
                             <constraint firstItem="iqq-Rz-fFr" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="Xvf-iZ-Srd"/>
                             <constraint firstItem="dad-Fg-qhm" firstAttribute="trailing" secondItem="9QM-OY-ceM" secondAttribute="trailing" constant="45" id="YGu-9b-tbf"/>
+                            <constraint firstItem="6d4-Ta-f4C" firstAttribute="centerX" secondItem="XbO-Bs-3KR" secondAttribute="centerX" id="bRg-V2-ndg"/>
                             <constraint firstItem="9QM-OY-ceM" firstAttribute="leading" secondItem="dad-Fg-qhm" secondAttribute="leading" constant="343" id="ksv-mz-zfm"/>
                             <constraint firstItem="iqq-Rz-fFr" firstAttribute="top" secondItem="dad-Fg-qhm" secondAttribute="top" constant="18" id="rnn-lL-Jlk"/>
                             <constraint firstItem="dad-Fg-qhm" firstAttribute="bottom" secondItem="9QM-OY-ceM" secondAttribute="bottom" constant="84.666666666666629" id="wbF-dz-WT2"/>
@@ -370,6 +397,7 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="dlV-oJ-4T9"/>
                     <connections>
+                        <outlet property="connectButton" destination="6d4-Ta-f4C" id="fII-r4-PU9"/>
                         <outlet property="imageView" destination="pMf-bn-mjp" id="eV4-mB-DDw"/>
                         <outlet property="loading" destination="VbD-1Z-C33" id="ylf-P9-sNU"/>
                         <outlet property="segVC" destination="iqq-Rz-fFr" id="1IR-Zn-6TK"/>
@@ -725,6 +753,10 @@
             <point key="canvasLocation" x="2787" y="88"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hzr-mc-fMf"/>
+        <segue reference="cWq-lh-LIc"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="BlankProfile" width="640" height="640"/>

@@ -3,10 +3,15 @@ import Placid
 import CoreData
 import FirebaseAuth
 
+struct Variables {
+    static var connected = false
+}
+
 class HomeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var segVC: UISegmentedControl!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     var currentColor: String!
     var darkMode: Bool!
@@ -37,6 +42,15 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.isHidden = true
+        shareButton.isHidden = true
+        segVC.isHidden = true
+        setColorScheme()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("connected: \(Variables.connected)")
         let user = Auth.auth().currentUser
         username = user?.displayName
         if(username == nil){
@@ -50,15 +64,28 @@ class HomeViewController: UIViewController {
               }
             }
         }
-        
-        mainTemplate?.preload()
-        moodTemplate?.preload()
-        //topSongsTemplate?.preload()
-        populateTopTracks()
-        calculateMainstreamScore()
-        populateValence()
-        setColorScheme()
-        loadMainImage()
+        if(Variables.connected){
+            segVC.isHidden = false
+            connectButton.isHidden = true
+            mainTemplate?.preload()
+            moodTemplate?.preload()
+            topSongsTemplate?.preload()
+            populateTopTracks()
+            calculateMainstreamScore()
+            populateValence()
+            setColorScheme()
+            switch segVC.selectedSegmentIndex {
+            case 0:
+                loadMainImage()
+            case 1:
+                loadMoodImage()
+            case 2:
+                loadTopSongsImage()
+            default:
+                print("Error")
+            }
+            setColorScheme()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,16 +101,19 @@ class HomeViewController: UIViewController {
         
         setColorScheme()
         
-        switch segVC.selectedSegmentIndex {
-            case 0:
-                loadMainImage()
-            case 1:
-                loadMoodImage()
-            case 2:
-                loadTopSongsImage()
-            default:
-                print("Error")
+        if(Variables.connected){
+            switch segVC.selectedSegmentIndex {
+                case 0:
+                    loadMainImage()
+                case 1:
+                    loadMoodImage()
+                case 2:
+                    loadTopSongsImage()
+                default:
+                    print("Error")
+            }
         }
+        
     }
     
     private func mainImageBackground(color: UIColor) {
@@ -137,6 +167,7 @@ class HomeViewController: UIViewController {
     }
     
     private func loadMainData(){
+        setColorScheme()
         let userBlurb = mainTemplate?.textLayer(named: "userBlurb")
         userBlurb?.text = "\(username ?? "user"), \(commonTracks) of your top songs appear in the global charts ... your music taste is \(mainstreamCategory)"
         
@@ -186,6 +217,7 @@ class HomeViewController: UIViewController {
     }
     
     private func loadMoodData(){
+        setColorScheme()
         let userBlurb = moodTemplate?.textLayer(named: "userBlurb")
         userBlurb?.text = "\(username ?? "user"), based on your listening habits, we've noticed that your current mood is"
         
@@ -208,6 +240,7 @@ class HomeViewController: UIViewController {
     }
     
     private func loadTopSongsData(){
+        setColorScheme()
         let songTitle = topSongsTemplate?.textLayer(named: "SongTitle")
         let artistName = topSongsTemplate?.textLayer(named: "ArtistName")
         let artistImage = topSongsTemplate?.pictureLayer(named: "ArtistImage")
@@ -254,6 +287,9 @@ class HomeViewController: UIViewController {
                 mainTemplate = PlacidSDK.template(withIdentifier: "qlmhe8hvu")
                 moodTemplate = PlacidSDK.template(withIdentifier: "wf1xyvyhu")
                 topSongsTemplate = PlacidSDK.template(withIdentifier: "1jrtyolls")
+                mainTemplate?.preload()
+                moodTemplate?.preload()
+                topSongsTemplate?.preload()
         }
     }
     func loadMainImage() {
@@ -301,7 +337,8 @@ class HomeViewController: UIViewController {
     
     @IBAction func segChanged(_ sender: Any) {
         setColorScheme()
-        switch segVC.selectedSegmentIndex {
+        if(Variables.connected){
+            switch segVC.selectedSegmentIndex {
             case 0:
                 loadMainImage()
             case 1:
@@ -310,6 +347,7 @@ class HomeViewController: UIViewController {
                 loadTopSongsImage()
             default:
                 print("Unknown Error")
+            }
         }
     }
     
@@ -415,6 +453,9 @@ class HomeViewController: UIViewController {
         let fetchedResults = getTrackItem()
         var trackItems:[NSManagedObject] = []
         var globalTrackItems:[NSManagedObject] = []
+        trackArray = [Track]()
+        globalTrackArrary = [Track]()
+        
         for track in fetchedResults {
             let collectionName = track.value(forKey: "collectionName") as! String
             if (collectionName == "userTopTracks") {
@@ -466,6 +507,7 @@ class HomeViewController: UIViewController {
     
     private func calculateMainstreamScore(){
         var similarTracksName = [String]()
+        commonTracks = 0
         for track in trackArray {
             let idOne = track.id
             for trackTwo in globalTrackArrary {
@@ -475,6 +517,8 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+        
+        print("trackArray lenght: \(trackArray.count)")
         
         let capacity = similarTracksName.count
         commonTracks = capacity
@@ -521,5 +565,12 @@ class HomeViewController: UIViewController {
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
     }
+    
+    @IBAction func connectPressed(_ sender: Any) {
+        Variables.connected = true
+        print("connected: \(Variables.connected)")
+        connectButton.isHidden = true
+    }
+    
     
 }
