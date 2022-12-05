@@ -16,11 +16,12 @@ import FirebaseStorage
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var logoutButton: UIButton!
-  
+    @IBOutlet weak var stayLoginSwitch: UISwitch!
+    
     @IBOutlet weak var notificationSwitch: UISwitch!
     var preferences: NSManagedObject!
     var darkModeStatus: Bool!
-    let user = Auth.auth().currentUser
+    var user = Auth.auth().currentUser
     let dbRef = Storage.storage().reference()
     
     @IBOutlet weak var imageView: UIImageView!
@@ -188,6 +189,18 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
+    @IBAction func stayLoginPressed(_ sender: Any) {
+        if stayLoginSwitch.isOn {
+            
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1000) {
+                    self.logOutPressed(self.logoutButton)
+                }
+                
+            }
+        }
+    
+    
     private func getPreferences() {
         let fetchedPreferences = retrievePreferences()
         if(fetchedPreferences.isEmpty) {
@@ -286,4 +299,5 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
+
 }
