@@ -30,13 +30,13 @@ class LoginViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        let mode = darkMode.darkMode
+        /*let mode = darkMode.darkMode
         if (mode){
             view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
             
         } else {
             self.view.backgroundColor = UIColor.lightGray
-        }
+        }*/
     }
     
     @IBAction func signInButtonPressed(_ sender: Any) {

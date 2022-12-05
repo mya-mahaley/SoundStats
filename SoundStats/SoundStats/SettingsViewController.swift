@@ -13,11 +13,6 @@ import FirebaseDatabase
 import FirebaseStorage
 
 
-
-struct darkMode {
-    static var darkMode = true
-}
-
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var logoutButton: UIButton!
@@ -173,7 +168,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             updateDarkMode(mode: true)
             view.backgroundColor = UIColor(red: 0.102, green: 0.1098, blue: 0.1294, alpha: 1.0)
         } else {
-            //darkMode.darkMode = false
             updateDarkMode(mode: false)
             view.backgroundColor = UIColor.lightGray
         }
@@ -181,18 +175,16 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     @IBAction func logOutPressed(_ sender: UIButton) {
-        
         let firebaseAuth = Auth.auth()
         do {
           try firebaseAuth.signOut()
         } catch let signOutError as NSError {
           print("Error signing out: %@", signOutError)
         }
-    
+        
+        Variables.connected = false
         navigationController?.popToRootViewController(animated: true)
         self.performSegue(withIdentifier: "logOutPressed", sender: self)
-        
-        
         
     }
     
@@ -214,7 +206,6 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
         preferences.setValue("Gradient", forKey: "color")
         preferences.setValue(true, forKey: "darkMode")
-    
         
         // commit the changes
         do {
@@ -264,12 +255,12 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBAction func changeNamePressed(_ sender: Any) {
         let alert = UIAlertController(
-            title: "Register",
-            message: "Register",
+            title: "Change Display Name",
+            message: "Enter a new display name!",
             preferredStyle: .alert)
         alert.addTextField {
             tfName in
-            tfName.placeholder = "Enter your name"
+            tfName.placeholder = "Name"
         }
         let saveAction = UIAlertAction(title: "Save", style: .default) {
             _ in
