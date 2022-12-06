@@ -50,6 +50,10 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         print("connected: \(Variables.connected)")
         let user = Auth.auth().currentUser
         username = user?.displayName
@@ -71,6 +75,9 @@ class HomeViewController: UIViewController {
             moodTemplate?.preload()
             topSongsTemplate?.preload()
             populateTopTracks()
+            while (trackArray.count == 0){
+                populateTopTracks()
+            }
             calculateMainstreamScore()
             populateValence()
             setColorScheme()
@@ -86,11 +93,8 @@ class HomeViewController: UIViewController {
             }
             setColorScheme()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         getPreferences()
+        print("VIEW DID APPEAR")
         currentColor = preferences.value(forKey: "color") as? String
         darkMode = preferences.value(forKey: "darkMode") as? Bool
         if (darkMode){
