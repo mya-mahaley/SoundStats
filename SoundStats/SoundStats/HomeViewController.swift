@@ -524,7 +524,9 @@ class HomeViewController: UIViewController {
         let capacity = similarTracksName.count
         commonTracks = capacity
         let topTracksLength = Double(trackArray.count)
-        mainstreamScore = (Double(capacity)/topTracksLength)*100.0
+        if(topTracksLength > 0){
+            mainstreamScore = (Double(capacity)/topTracksLength)*100.0
+        }
         switch (mainstreamScore){
         case 0:
             mainstreamCategory = "underground underground"

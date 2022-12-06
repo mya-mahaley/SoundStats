@@ -19,15 +19,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.passwordField.isSecureTextEntry = true
-        
         getPreferences()
-        let autoLogin = preferences.value(forKey: "autoLogin") as? Bool
-        if(preferences != nil && autoLogin != nil && autoLogin == false){
-            let firebaseAuth = Auth.auth()
-            do {
-              try firebaseAuth.signOut()
-            } catch let signOutError as NSError {
-              print("Error signing out: %@", signOutError)
+        if(preferences != nil ){
+            let autoLogin = preferences.value(forKey: "autoLogin") as? Bool
+            if (autoLogin != nil && autoLogin == false) {
+                let firebaseAuth = Auth.auth()
+                do {
+                    try firebaseAuth.signOut()
+                } catch let signOutError as NSError {
+                    print("Error signing out: %@", signOutError)
+                }
             }
         }
         
